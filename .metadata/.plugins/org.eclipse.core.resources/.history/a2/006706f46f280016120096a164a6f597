@@ -1,0 +1,34 @@
+package br.com.brq.financialhealth.entities;
+
+import java.util.Date;
+
+public class DespesaVariavel {
+	
+	private Integer idDespesaFixa;
+	private String nome;
+	private Double valor;
+	private Date dataDespesaFixa;
+	private Usuario usuario;
+	
+	public DespesaVariavel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public DespesaVariavel(Integer idDespesaFixa, String nome, Double valor, Date dataDespesaFixa) {
+		this.idDespesaFixa = idDespesaFixa;
+		this.nome = nome;
+		this.valor = valor;
+		this.dataDespesaFixa = dataDespesaFixa;
+	}
+
+	public DespesaVariavel(Integer idDespesaFixa, String nome, Double valor, Date dataDespesaFixa, Usuario usuario) {
+		this.idDespesaFixa = idDespesaFixa;
+		this.nome = nome;
+		this.valor = valor;
+		this.dataDespesaFixa = dataDespesaFixa;
+		this.usuario = usuario;
+	}
+	
+	
+	
+}

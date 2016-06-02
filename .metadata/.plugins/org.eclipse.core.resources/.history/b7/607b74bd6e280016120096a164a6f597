@@ -1,0 +1,38 @@
+package br.com.brq.financialhealth.entities;
+
+import java.util.Date;
+
+public class Usuario {
+	
+	private Integer idUsuario;
+	private String nome;
+	private String email;
+	private String cpf;
+	private Date dataNascimento;
+	private Investimento investimento;
+	private DespesaFixa despesaFixa;
+	private DespesaVariavel despesaVariavel;
+	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento) {
+		this.idUsuario = idUsuario;
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento,
+			Investimento investimento, DespesaFixa despesaFixa, DespesaVariavel despesaVariavel) {
+		this(idUsuario, nome, email, cpf);
+		this.investimento = investimento;
+		this.despesaFixa = despesaFixa;
+		this.despesaVariavel = despesaVariavel;
+	}
+	
+	
+	
+}

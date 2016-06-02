@@ -1,0 +1,13 @@
+package br.com.brq.financialhealth.entities;
+
+import java.util.Date;
+
+public class DespesaVariavel {
+	
+	private Integer idDespesaFixa;
+	private String nome;
+	private Double valor;
+	private Date dataDespesaFixa;
+	private Usuario usuario;
+	
+}
