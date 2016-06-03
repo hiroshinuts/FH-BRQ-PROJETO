@@ -2,12 +2,41 @@ package br.com.brq.financialhealth.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "despesafixa")
+@NamedQueries(
+		{
+			
+		}
+)
 public class DespesaFixa {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "iddespesa")
 	private Integer idDespesaFixa;
+	
+	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
+	
+	@Column(name = "valor", length = 50, nullable = false)
 	private Double valor;
+	
+	@Column(name= "datadespesafixa", nullable = false)
 	private Date dataDespesaFixa;
+	
+	@JoinColumn(name = "idusuario", nullable = false)
+	@ManyToOne
 	private Usuario usuario;
 	
 	public DespesaFixa() {

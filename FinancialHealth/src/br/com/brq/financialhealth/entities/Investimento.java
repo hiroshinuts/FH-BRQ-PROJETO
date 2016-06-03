@@ -2,12 +2,41 @@ package br.com.brq.financialhealth.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "investimento")
+@NamedQueries(
+		{
+			
+		}
+		)
 public class Investimento {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="idinvestimento")
 	private Integer idInvestimento;
+	
+	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
+	
+	@Column(name = "valor", length = 50, nullable = false)
 	private Double valor;
+	
+	@Column(name = "datainvestimento", nullable = false)
 	private Date dataInvestimento;
+	
+	@ManyToOne
+	@JoinColumn(name = "idusuario", nullable = false)
 	private Usuario usuario;
 	
 	public Investimento() {

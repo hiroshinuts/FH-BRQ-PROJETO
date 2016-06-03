@@ -20,6 +20,7 @@ public class GenerateTables {
 		}
 		catch(Exception e){
 			System.out.println("Erro: " + e.getMessage());
+			e.printStackTrace();
 		}		
 	}
 	

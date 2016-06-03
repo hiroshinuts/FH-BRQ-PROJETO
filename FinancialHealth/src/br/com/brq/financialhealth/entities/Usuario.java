@@ -1,37 +1,83 @@
 package br.com.brq.financialhealth.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuario")
+@NamedQueries({
+
+})
 public class Usuario {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idusuario")
 	private Integer idUsuario;
+
+	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
+
+	@Column(name = "email", length = 50, nullable = false)
 	private String email;
+
+	@Column(name = "cpf", length = 50, nullable = false, unique = true)
 	private String cpf;
+
+	@Column(name = "datanascimento", nullable = false)
 	private Date dataNascimento;
-	private Investimento investimento;
-	private DespesaFixa despesaFixa;
-	private DespesaVariavel despesaVariavel;
-	
+
+	@Column(name = "renda", length = 50, nullable = false)
+	private Double renda;
+
+	@Column(name = "senha", length = 50, nullable = false)
+	private String senha;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<Investimento> investimento;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<DespesaFixa> despesaFixa;
+
+	@OneToMany(mappedBy = "usuario")
+	private List<DespesaVariavel> despesaVariavel;
+
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento) {
+	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento,
+			Double rendimentoMensalLiquido, String senha) {
+		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
+		this.renda = renda;
+		this.senha = senha;
 	}
 
 	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento,
-			Investimento investimento, DespesaFixa despesaFixa, DespesaVariavel despesaVariavel) {
+			Double rendimentoMensalLiquido, String senha, List<Investimento> investimento,
+			List<DespesaFixa> despesaFixa, List<DespesaVariavel> despesaVariavel) {
+		super();
 		this.idUsuario = idUsuario;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
+		this.renda = renda;
+		this.senha = senha;
 		this.investimento = investimento;
 		this.despesaFixa = despesaFixa;
 		this.despesaVariavel = despesaVariavel;
@@ -77,51 +123,68 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Investimento getInvestimento() {
+	public Double getRenda() {
+		return renda;
+	}
+
+	public void setRendimentoMensalLiquido(Double renda) {
+		this.renda = renda;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public List<Investimento> getInvestimento() {
 		return investimento;
 	}
 
-	public void setInvestimento(Investimento investimento) {
+	public void setInvestimento(List<Investimento> investimento) {
 		this.investimento = investimento;
 	}
 
-	public DespesaFixa getDespesaFixa() {
+	public List<DespesaFixa> getDespesaFixa() {
 		return despesaFixa;
 	}
 
-	public void setDespesaFixa(DespesaFixa despesaFixa) {
+	public void setDespesaFixa(List<DespesaFixa> despesaFixa) {
 		this.despesaFixa = despesaFixa;
 	}
 
-	public DespesaVariavel getDespesaVariavel() {
+	public List<DespesaVariavel> getDespesaVariavel() {
 		return despesaVariavel;
 	}
 
-	public void setDespesaVariavel(DespesaVariavel despesaVariavel) {
+	public void setDespesaVariavel(List<DespesaVariavel> despesaVariavel) {
 		this.despesaVariavel = despesaVariavel;
 	}
 
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf
-				+ ", dataNascimento=" + dataNascimento + ", investimento=" + investimento + ", despesaFixa="
-				+ despesaFixa + ", despesaVariavel=" + despesaVariavel + "]";
+				+ ", dataNascimento=" + dataNascimento + ", rendimentoMensalLiquido=" + renda
+				+ ", senha=" + senha + ", investimento=" + investimento + ", despesaFixa=" + despesaFixa
+				+ ", despesaVariavel=" + despesaVariavel + "]";
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 
-		if(obj instanceof Usuario){
+		if (obj instanceof Usuario) {
 			Usuario user = (Usuario) obj;
 			return user.getIdUsuario().equals(idUsuario);
 		}
-		
+
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return idUsuario.hashCode();
 	}
-	
+
 }
