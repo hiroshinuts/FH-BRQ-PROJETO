@@ -1,2 +1,14 @@
 1464834128156	Move 'web.xml' to 'WEB-INF'
 1464836076229	Delete elements
+1465005032326	Move 'spring-context.xml' to 'WEB-INF'
+1465005176050	Rename resource 'olaMundoSpring.jsp'
+1465008726442	Delete elements
+1465008737769	Delete element
+1465009646855	Move 'ok.jsp' to 'view'
+1465009701537	Move 'ok.jsp' to 'view'
+1465009708211	Rename resource 'view'
+1465009722267	Delete element
+1465009780773	Delete element
+1465009788317	Delete element
+1465010883048	Rename package 'br.com.financialhealth.generics'
+1465011044444	Rename package 'br.com.financialhealth.perristence.generics'

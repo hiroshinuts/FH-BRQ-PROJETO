@@ -36,8 +36,8 @@ public class Usuario {
 	@Column(name = "datanascimento", nullable = false)
 	private Date dataNascimento;
 
-	@Column(name = "renda", length = 50, nullable = false)
-	private Double renda;
+	@Column(name = "rendimentomensalliquido", length = 50, nullable = false)
+	private Double rendimentoMensalLiquido;
 
 	@Column(name = "senha", length = 50, nullable = false)
 	private String senha;
@@ -63,7 +63,7 @@ public class Usuario {
 		this.email = email;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-		this.renda = renda;
+		this.rendimentoMensalLiquido = rendimentoMensalLiquido;
 		this.senha = senha;
 	}
 
@@ -76,7 +76,7 @@ public class Usuario {
 		this.email = email;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
-		this.renda = renda;
+		this.rendimentoMensalLiquido = rendimentoMensalLiquido;
 		this.senha = senha;
 		this.investimento = investimento;
 		this.despesaFixa = despesaFixa;
@@ -123,12 +123,12 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Double getRenda() {
-		return renda;
+	public Double getRendimentoMensalLiquido() {
+		return rendimentoMensalLiquido;
 	}
 
-	public void setRendimentoMensalLiquido(Double renda) {
-		this.renda = renda;
+	public void setRendimentoMensalLiquido(Double rendimentoMensalLiquido) {
+		this.rendimentoMensalLiquido = rendimentoMensalLiquido;
 	}
 
 	public String getSenha() {
@@ -166,7 +166,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf
-				+ ", dataNascimento=" + dataNascimento + ", rendimentoMensalLiquido=" + renda
+				+ ", dataNascimento=" + dataNascimento + ", rendimentoMensalLiquido=" + rendimentoMensalLiquido
 				+ ", senha=" + senha + ", investimento=" + investimento + ", despesaFixa=" + despesaFixa
 				+ ", despesaVariavel=" + despesaVariavel + "]";
 	}

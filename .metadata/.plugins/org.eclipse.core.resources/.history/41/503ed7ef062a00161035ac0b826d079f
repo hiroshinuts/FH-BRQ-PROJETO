@@ -1,0 +1,20 @@
+package br.com.financialhealth.persistence.generics;
+
+import java.io.Serializable;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+public abstract class DAOGeneric<T, K extends Serializable> implements IDAOGeneric<T, K>{
+	
+	protected Session session;
+	protected Transaction transaction;
+	protected Query query;
+	
+	private Class<T> tipo;
+	
+	public DAOGeneric<Class<T>, tipo{
+		this.tipo = tipo;
+	}
+}

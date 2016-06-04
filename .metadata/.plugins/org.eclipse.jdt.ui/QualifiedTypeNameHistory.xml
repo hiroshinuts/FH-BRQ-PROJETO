@@ -7,4 +7,6 @@
 <fullyQualifiedTypeName name="br.com.brq.financialhealth.entities.DespesaVariavel"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="br.com.brq.financialhealth.entities.DespesaFixa"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 </qualifiedTypeNameHistroy>

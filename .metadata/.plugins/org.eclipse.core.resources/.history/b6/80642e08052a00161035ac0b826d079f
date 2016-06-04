@@ -1,0 +1,5 @@
+package br.com.financialhealth.persistence.generics;
+
+public interface IDAOGeneric<T, K extends Serializable> {
+
+}

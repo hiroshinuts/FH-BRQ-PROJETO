@@ -7,9 +7,9 @@
   	<!-- Configurações para o Hibernate acessar a base de dados -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aula12</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/projeto</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">brqbrq</property>
+    <property name="hibernate.connection.password">rhtrht</property>
     
     <!-- Configuração para que sempre que o hibernate execute uma instrução SQL
          no banco de dados, ele imprima o codigo SQL no console do eclipse -->
@@ -19,7 +19,11 @@
     <property name="hibernate.format_sql">true</property>
     
     <!-- Incluir cada classe mapeada pela JPA -->
-    <mapping class="br.com.brq.entities.Funcionario"/>
+    <mapping class="br.com.brq.financialhealth.entities.Usuario"/>
+    <mapping class="br.com.brq.financialhealth.entities.DespesaFixa"/>
+    <mapping class="br.com.brq.financialhealth.entities.DespesaVariavel"/>
+    <mapping class="br.com.brq.financialhealth.entities.Investimento"/>
+    <mapping class="br.com.brq.financialhealth.entities.Login"/>
 
  </session-factory>
 </hibernate-configuration>

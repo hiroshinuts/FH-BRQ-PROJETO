@@ -1,0 +1,14 @@
+127.0.0.1 - - [04/Jun/2016:00:05:10 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:05:12 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 253
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:05:18 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 253
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:06:29 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 253
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:06:36 -0300] "GET /FinancialHealth/olaMundoSpring HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:07:29 -0300] "GET /FinancialHealth/olaMundoSpring HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:07:30 -0300] "GET /FinancialHealth/olaMundoSpring HTTP/1.1" 404 1066
+127.0.0.1 - - [04/Jun/2016:00:07:50 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:07:52 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 253
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:07:57 -0300] "GET /FinancialHealth/olaMundoSpring HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:00:08:32 -0300] "GET /FinancialHealth/olaMundoSpring HTTP/1.1" 200 200
+127.0.0.1 - - [04/Jun/2016:01:02:31 -0300] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:01:02:33 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 253
+0:0:0:0:0:0:0:1 - - [04/Jun/2016:01:02:53 -0300] "GET /FinancialHealth/ HTTP/1.1" 200 267
