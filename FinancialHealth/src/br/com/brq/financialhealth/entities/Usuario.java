@@ -15,9 +15,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 @NamedQueries({
-
 })
 public class Usuario {
+	
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

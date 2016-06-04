@@ -10,16 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "investimento")
 @NamedQueries(
 		{
+			@NamedQuery(name = Investimento.FINDBY_NOME,
+					query = "select inv from Investimento as inv where inv.nome like :p1 AND"
+							+ " id=:idusuario order by inv.nome"),
+			@NamedQuery(name = Investimento.FINDBY_DATA,
+					query = "select * from Investimento where datainvestimento between :d1 and :d2 order by datainvestimento")
 			
 		}
 		)
 public class Investimento {
+	
+	public static final String FINDBY_NOME = "investimento.findbynome";
+	public static final String FINDBY_DATA = "investimento.findbydata";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
