@@ -5,8 +5,22 @@
 <fullyQualifiedTypeName name="java.lang.ExceptionInInitializerError"/>
 <fullyQualifiedTypeName name="com.fasterxml.classmate.AnnotationConfiguration"/>
 <fullyQualifiedTypeName name="br.com.brq.financialhealth.entities.DespesaVariavel"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="br.com.brq.financialhealth.entities.DespesaFixa"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="br.com.financialhealth.persistence.generics.IDAOGeneric"/>
+<fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="javax.transaction.Transaction"/>
+<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+<fullyQualifiedTypeName name="org.hibernate.Query"/>
+<fullyQualifiedTypeName name="javax.persistence.NamedQueries"/>
+<fullyQualifiedTypeName name="javax.persistence.NamedQuery"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="br.com.brq.financialhealth.util.HibernateUtil"/>
+<fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+<fullyQualifiedTypeName name="br.com.financialhealth.persistence.generics.DAOGeneric"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="br.com.brq.financialhealth.persistence.DAOUsuario"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 </qualifiedTypeNameHistroy>

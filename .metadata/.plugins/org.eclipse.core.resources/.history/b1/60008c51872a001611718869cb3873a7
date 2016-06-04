@@ -1,0 +1,20 @@
+package br.com.brq.financialhealth.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import br.com.brq.financialhealth.persistence.DAOUsuario;
+
+@Controller
+public class ControleCadastro {
+	
+	private final DAOUsuario dao;
+	
+	@Autowired
+	public ControleCadastro(DAOUsuario dao){
+		this.dao = dao;
+	}
+	
+	
+
+}

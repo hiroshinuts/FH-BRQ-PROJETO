@@ -7,6 +7,11 @@
 <title>Teste</title>
 </head>
 <body>
- PAGINA MALACA
+
+
+	<a href="cadastro.jsp">Cadastro</a>
+	<a href="indexlogado.jsp" action="logado">Login</a>
+
+
 </body>
 </html>

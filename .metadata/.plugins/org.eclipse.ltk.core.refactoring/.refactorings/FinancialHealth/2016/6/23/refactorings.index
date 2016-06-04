@@ -14,3 +14,19 @@
 1465011044444	Rename package 'br.com.financialhealth.perristence.generics'
 1465061614871	Rename package 'br.com.financialhealth.persistence'
 1465061632250	Rename package 'br.com.financialhealth.persistence.generics'
+1465062054706	Delete element
+1465062536637	Move 'views' to 'WebContent'
+1465062622718	Move 'views' to 'WEB-INF'
+1465062844646	Move 'indexlogado.jsp' to 'logado'
+1465063060388	Delete element
+1465063984536	Move 'indexlogado.jsp' to 'views'
+1465063995563	Delete element
+1465064140617	Move 'indexlogado.jsp' to 'WebContent'
+1465066998330	Move 'indexlogado.jsp' to 'views'
+1465067355921	Move 2 resources to 'WebContent'
+1465067367706	Copy files
+1465067589220	Rename package 'br.com.brq.financialheal.persistence.generics'
+1465067753050	Delete element
+1465067998820	Delete element
+1465071994265	Copy compilation unit
+1465072007553	Delete element

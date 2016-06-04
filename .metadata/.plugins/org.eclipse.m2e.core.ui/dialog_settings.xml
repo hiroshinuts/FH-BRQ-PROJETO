@@ -2,11 +2,13 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="br.com.brq.saudefin"/>
 			<item value="br.com.brq.financialhealth"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="SaudeFinanceira"/>
 			<item value="FinancialHealth"/>
 		</list>
 		<list key="projectNameTemplate">

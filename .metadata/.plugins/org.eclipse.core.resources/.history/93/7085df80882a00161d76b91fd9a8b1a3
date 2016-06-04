@@ -1,0 +1,16 @@
+package br.com.brq.financialhealth.controller;
+
+
+import br.com.brq.financialhealth.persistence.DAOUsuario;
+
+public class ControleCadastro {
+	
+	private final DAOUsuario dao;
+	
+	public ControleCadastro(DAOUsuario dao){
+		this.dao = dao;
+	}
+	
+	
+
+}

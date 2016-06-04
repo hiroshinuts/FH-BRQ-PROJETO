@@ -15,19 +15,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "despesafixa")
-@NamedQueries(
-		{@NamedQuery(name = DespesaFixa.FINDBY_NOME,
-				query = "select desf from DespesaFixa as desf where inv.nome like :p1 AND"
-						+ " id=:idusuario order by desf.nome"),
-		@NamedQuery(name = DespesaFixa.FINDBY_DATA,
-				query = "select * from DespesaFixa where datadespesafixa between :d1 and :d2 order by despesafixa")
-			
-		}
-)
+//@NamedQueries(
+//		{@NamedQuery(name = DespesaFixa.FINDBY_NOME,
+//				query = "select desf from DespesaFixa as desf where inv.nome like :p1 AND"
+//						+ " id=:idusuario order by desf.nome"),
+//		@NamedQuery(name = DespesaFixa.FINDBY_DATA,
+//				query = "select du from DespesaFixa as du where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesafixa")
+//			
+//		}
+//)
 public class DespesaFixa {
 	
-	public static final String FINDBY_NOME = "investimento.findbynome";
-	public static final String FINDBY_DATA = "investimento.findbydata";
+	public static final String FINDBY_NOME = "despesafixa.findbynome";
+	public static final String FINDBY_DATA = "despesafixa.findbydata";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
