@@ -17,10 +17,10 @@ import javax.persistence.Table;
 @Table(name = "despesafixa")
 //@NamedQueries(
 //		{@NamedQuery(name = DespesaFixa.FINDBY_NOME,
-//				query = "select desf from DespesaFixa as desf where inv.nome like :p1 AND"
-//						+ " id=:idusuario order by desf.nome"),
+//				query = "select nome from DespesaFixa as despf where inv.nome like :p1 AND"
+//						+ " id=:idusuario order by despf.nome"),
 //		@NamedQuery(name = DespesaFixa.FINDBY_DATA,
-//				query = "select du from DespesaFixa as du where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesafixa")
+//				query = "select nome from DespesaFixa as despf where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesafixa")
 //			
 //		}
 //)

@@ -44,6 +44,10 @@
 	<input type="password" name="senha" class="form-control required" />
 	<br/><br/>
 	
+	<label>Confirme sua Senha:</label><br/>
+	<input type="password" name="senhaconfirm" class="form-control required" />
+	<br/><br/>
+	
 	<input type="submit" value="Cadastrar" class="btn btn-success" />
 	
 	<br/><br/>

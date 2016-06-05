@@ -28,6 +28,13 @@ public class ControleUsuario extends HttpServlet {
     	if("cadastrarUsuario".equalsIgnoreCase(action)){
     		
     		try{
+    			
+    			String senha = request.getParameter("senha");
+    			String senhaConfirm = request.getParameter("senhaconfirm");
+    			
+    			if(senha.equals(senhaConfirm)){
+    				
+    			
     			Usuario user = new Usuario();
     			user.setNome(request.getParameter("nome"));
     			user.setEmail(request.getParameter("email"));
@@ -41,18 +48,40 @@ public class ControleUsuario extends HttpServlet {
     			
     			request.setAttribute("mensagem", "Usuario " + user.getNome() + " gravado com sucesso!");
     			
+    			}else{
+    				throw new Exception("Erro: Senhas não conferem. Tente novamente");
+    			}
     			
     		}catch(Exception e){
     			
     			request.setAttribute("mensagem", e.getMessage());
     			
     		}finally{
-    			request.getRequestDispatcher("indexlogado.jsp").forward(request, response);
+    			request.getRequestDispatcher("logado/indexlogado.jsp").forward(request, response);
     		}
     
     
     	}
-    	//else if
+    	else if("autenticar".equalsIgnoreCase(action)){
+    		
+    		try{
+    			
+    			DAOUsuario u = new DAOUsuario();
+    			
+    			if(u != null){
+    				u.autenticar(request.getParameter("cpf"), request.getParameter("senha"));
+    				
+    				request.getRequestDispatcher("logado/indexlogado.jsp").forward(request, response);
+    			}else{
+    				
+    				throw new Exception("Login ou Senha errados");
+    			}
+    			
+    		}catch(Exception e){
+    			e.getMessage();
+    		}
+    		
+    	}
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
