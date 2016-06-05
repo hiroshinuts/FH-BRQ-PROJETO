@@ -23,7 +23,6 @@
     <mapping class="br.com.brq.financialhealth.entities.DespesaFixa"/>
     <mapping class="br.com.brq.financialhealth.entities.DespesaVariavel"/>
     <mapping class="br.com.brq.financialhealth.entities.Investimento"/>
-    <mapping class="br.com.brq.financialhealth.entities.Login"/>
 
  </session-factory>
 </hibernate-configuration>

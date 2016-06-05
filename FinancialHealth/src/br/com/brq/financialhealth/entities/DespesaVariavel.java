@@ -1,4 +1,4 @@
-package br.com.brq.financialhealth.entities;
+ package br.com.brq.financialhealth.entities;
 
 import java.util.Date;
 
@@ -21,7 +21,7 @@ import javax.persistence.Table;
 //					query = "select desv from DespesaVariavel as desv where desv.nome like :p1 AND"
 //							+ " id=:idusuario order by desv.nome"),
 //			@NamedQuery(name = DespesaVariavel.FINDBY_DATA,
-//					query = "select du from DespesaVariavel as du where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesavariavel")
+//					query = "select dv from DespesaVariavel as dv where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesavariavel")
 //		}
 //		)
 public class DespesaVariavel {
