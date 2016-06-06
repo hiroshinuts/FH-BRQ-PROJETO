@@ -1,0 +1,16 @@
+package br.com.brq.financialhealth.util;
+
+public class CalculoPorIdade {
+	
+	int idade = 0;
+	int investimento = 0;
+	int despesaFixa = 0;
+	int despesaVariavel = 0;
+	
+	
+		
+		
+		
+	}
+
+}

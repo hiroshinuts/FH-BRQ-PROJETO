@@ -18,20 +18,35 @@
 <script type="text/javascript" src="/FinancialHealth/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="container">
 
-	<div id="fullscreen_bg" class="fullscreen_bg"/>
+<jsp:include page="template/topo.jsp"></jsp:include>
 
-<div class="container">
+	 <div class="well well-sm">
+		<h2> Área de Acesso Restrito</h2>
+	 </div>
+	 
+	 <div> 
+	 	<a href="index.jsp">Voltar</a> para a página inicial.
+	 	<br/>
+	 	<br/>
+	 	<br/>	 
+	   </div> 
 
-    <form class="form-signin" name="formulariologin" method="post" action="ControleUsuario?action=autenticar">
-		<h1 class="form-signin-heading text-muted">Entrar</h1>
-		<input name="cpf" type="text" class="form-control" placeholder="Digite seu CPF" required="" autofocus="">
-		<input name="senha" type="password" class="form-control" placeholder="Password" required="">
-		<input type="submit" value="Entrar" class="btn btn-success">
+	<form name = "formulario" method="post" action="ControleUsuario?action=login">
+		<div class="col-md-12" >
+		
+			<div class="col-md-5">
+				<input type="text" name="cpf" class="form-control"  placeholder="CPF"><br/>
+				<input type="password" name="senha" class="form-control" placeholder="Senha">
+				${mensagem}
+				
+				<br/><br/>
+				<input type="submit" value="Autenticar Usuario"
+					   class="btn btn-success btn-block"/>
+			</div>
+		</div>
 	</form>
-
-</div>
 
 </body>
 </html>

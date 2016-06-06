@@ -1,0 +1,17 @@
+package br.com.brq.financialhealth.util;
+
+public class CalculoPorIdade {
+	
+	
+	class GuardaValores{
+		int idade;
+		double investimento;
+		double despesaFixa;
+		double despesaVariavel;
+		
+	}
+		
+		
+		
+	}
+

@@ -18,12 +18,28 @@
 <script type="text/javascript" src="/FinancialHealth/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="container">
 
-
-	<a href="cadastro.jsp">Cadastro</a>
-	<a href="login.jsp" action="logado">Login</a>
-
-
+	<jsp:include page="template/topo.jsp"></jsp:include>
+	
+	<div class="col-md-12">
+	
+		<h3>Bem Vindo</h3>
+		<hr/>
+		
+		<div class="col-md-8 panel text-center">
+				<div class="glyphicon glyphicon-plus-sign" style="font-size: 3em;">
+				<br/><br/>
+					<a href="cadastro.jsp" class="btn btn-default btn-block">Cadastro</a>
+				</div>
+		
+				<div class="col-md-8 panel text-center">
+					<div class="glyphicon glyphicon-play" style="font-size: 3em;">
+					<br/><br/>
+						<a href="login.jsp" class="btn btn-default btn-block">Login</a>
+					</div>
+				</div>
+		</div>
+	</div>
 </body>
 </html>

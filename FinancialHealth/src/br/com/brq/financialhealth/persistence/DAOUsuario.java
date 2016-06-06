@@ -7,28 +7,25 @@ import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;
 
-public class DAOUsuario extends DAOGeneric<Usuario, Integer>{
+public class DAOUsuario extends DAOGeneric<Usuario, Integer> {
 
 	public DAOUsuario() {
 		super(Usuario.class);
 	}
-	
-	
-	public Usuario autenticar(String cpf, String senha) throws Exception{
-		
+
+	public Usuario findByLoginSenha(String cpf, String senha) throws Exception {
+
 		session = HibernateUtil.getSessionFactory().openSession();
 		
-			Criteria consulta = session.createCriteria(Usuario.class);
-			consulta.createAlias("usuario","u");
-			consulta.add(Restrictions.eq("u.cpf", cpf));
-			consulta.add(Restrictions.eq("senha", senha));
-			
-			Usuario resultado = (Usuario) consulta.uniqueResult();
-			
-			session.close();
-			
-			return resultado;
-		}
+		query = session.getNamedQuery(Usuario.FIND_LOGIN);
+		query.setString("p1", cpf);
+		query.setString("p2", senha);
 		
-	}
+		Usuario u = (Usuario) query.uniqueResult();
+		System.out.println(cpf+" "+senha);
+		session.close();
+		return u;
 	
+	}
+
+}

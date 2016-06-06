@@ -16,43 +16,51 @@
 </head>
 <body class = "container">
 
-	<h2>Cadastro de Usuario</h2><br/>
-	<form name="formulario" method="post" action="ControleUsuario?action=cadastrarUsuario">
-	<br/><br/>
+<jsp:include page="template/topo.jsp"></jsp:include>
+<div class="col-md-12">
+
+<h3>Cadastro de Usuario</h3>
+<a href="index.jsp">Voltar</a> para a página inicial.
+<hr/>
+
+
+	<div class="col-md-4">
 	
-	<label>Nome Completo:</label><br/>
-	<input type="text" name="nome" class="form-control required" placeholder="Digite aqui"/>
-	<br/><br/>
+			<form name="formulario" method="post" action="ControleUsuario?action=cadastrarUsuario">
+			
+				<label>Nome Completo:</label><br/>
+				<input type="text" name="nome" class="form-control required" placeholder="Digite aqui"/>
+				<br/>
+				
+				<label>Email:</label><br/>
+				<input type="text" name="email" class="form-control required" placeholder="Digite aqui"/>
+				<br/>
+				
+				<label>Cpf:</label> Digitar apenas os numeros<br/>
+				<input type="text" name="cpf" class="form-control required" placeholder="cpf"/>
+				<br/>
+				
+				<label>Data de Nascimento</label><br/>
+				<input  type="date" name="datanascimento" class="form-control required" />
+				<br/>
+				
+				<label>Rendimento Mensal:</label><br/>
+				<input type="number" name="rendimentomensalliquido" class="form-control required"/>
+				<br/>
+				
+				<label>Senha:</label><br/>
+				<input type="password" name="senha" class="form-control required" />
+				<br/>
+				
+				<label>Confirme sua Senha:</label><br/>
+				<input type="password" name="senhaconfirm" class="form-control required" />
+				<br/>
+				
+				<input type="submit" value="Cadastrar" class="btn btn-success" />
+				<br/>
+			</form>
+		</div>
 	
-	<label>Email:</label><br/>
-	<input type="text" name="email" class="form-control required" placeholder="Digite aqui"/>
-	<br/><br/>
-	
-	<label>cpf:</label><br/>
-	<input type="text" name="cpf" class="form-control required" placeholder="cpf"/>
-	<br/><br/>
-	
-	<label>Data de Nascimento</label><br/>
-	<input  type="date" name="datanascimento" class="form-control required" />
-	<br/><br/>
-	
-	<label>Rendimento Mensal:</label><br/>
-	<input type="number" name="rendimentomensalliquido" class="form-control required"/>
-	<br/><br/>
-	
-	<label>Senha:</label><br/>
-	<input type="password" name="senha" class="form-control required" />
-	<br/><br/>
-	
-	<label>Confirme sua Senha:</label><br/>
-	<input type="password" name="senhaconfirm" class="form-control required" />
-	<br/><br/>
-	
-	<input type="submit" value="Cadastrar" class="btn btn-success" />
-	
-	<br/><br/>
-	
-	</form>
-	
+</div>
 </body>
 </html>

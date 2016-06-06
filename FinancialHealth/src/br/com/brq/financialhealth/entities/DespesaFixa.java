@@ -15,15 +15,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "despesafixa")
-//@NamedQueries(
-//		{@NamedQuery(name = DespesaFixa.FINDBY_NOME,
-//				query = "select nome from DespesaFixa as despf where inv.nome like :p1 AND"
-//						+ " id=:idusuario order by despf.nome"),
-//		@NamedQuery(name = DespesaFixa.FINDBY_DATA,
-//				query = "select nome from DespesaFixa as despf where datadespesafixa between :d1 and :d2 AND id=usuario order by datadespesafixa")
-//			
-//		}
-//)
+@NamedQueries(
+		{
+			@NamedQuery(name = DespesaFixa.FINDBY_NOME,
+					query = "select desf from DespesaFixa as desf where desf.nome like :p1 AND "
+							+ "id=usuario order by desf.nome"),
+		//	@NamedQuery(name = DespesaFixa.FINDBY_DATA,
+		//			query = "select df from DespesaFixa as df where df.datadespesafixa between :d1 and :d2 AND id=usuario order by df.datadespesafixa")
+		}
+		)
 public class DespesaFixa {
 	
 	public static final String FINDBY_NOME = "despesafixa.findbynome";

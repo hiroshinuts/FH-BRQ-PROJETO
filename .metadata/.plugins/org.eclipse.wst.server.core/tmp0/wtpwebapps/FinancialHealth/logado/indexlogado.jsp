@@ -18,18 +18,45 @@
 <script type="text/javascript" src="/FinancialHealth/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="container">
 	
-		<a href="#" data-target="#janelainvestimento" data-toggle="modal">Cadastrar Investimento</a>
-		<a href="#" data-target="#janeladespesafixa" data-toggle="modal">Cadastrar Despesa Fixa</a>
-		<a href="#" data-target="#janeladespesavariavel" data-toggle="modal">Cadastrar Despesa Variavel</a>
-		<a href="analise.jsp" >Análise</a> 
+	<div class="col-md-12">
+	<jsp:include page="/template/topo.jsp"></jsp:include>
+	
+	
+		<div class="col-md-3 panel text-center">
+			<a href="#" data-target="#janelainvestimento" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Investimento</a>
+		</div>
 		
+		<div class="col-md-3 panel text-center">
+			<a href="#" data-target="#janeladespesafixa" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Despesa Fixa</a>
+		</div>
+			
+		
+		<div class="col-md-3 panel text-center">
+			<a href="#" data-target="#janeladespesavariavel" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Despesa Variavel</a>
+		</div>
+		
+			<br/><br/><br/>
+			
+		<div class="col-md-3 panel text-center">
+			<a href="/FinancialHealth/logado/analise.jsp" class="btn btn-default btn-block" >Análise</a> 
+		</div>
+		
+		
+		 <div class="col-md-3 panel text-center"> 
+	 		<a href="ControleUsuario?action=logout" class="btn btn-danger btn-block">
+	 			<span class="glyphicon glyphicon-off"></span> Logout
+	 		</a>
+	  	 </div> 
+	
+	<hr/>	
+	
 		
 		<div id="janelainvestimento" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-				<div class="modal-header bg-primary">
+				<div class="modal-header bg-default">
 					<span class="glyphicon glyphicon-user"></span>
 						Cadastrar Investimento
 				</div>		
@@ -51,6 +78,7 @@
 						<input  type="date" name="datainvestimento" class="form-control required" />
 						<br/><br/>
 						
+						
 						<input type="submit" value="Cadastrar" class="btn btn-success" />
 						
 					</form>
@@ -63,7 +91,7 @@
 			<div id="janeladespesafixa" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-				<div class="modal-header bg-primary">
+				<div class="modal-header bg-default">
 					<span class="glyphicon glyphicon-user"></span>
 						Cadastrar Despesa Fixa
 				</div>		
@@ -97,7 +125,7 @@
 			<div id="janeladespesavariavel" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
-				<div class="modal-header bg-primary">
+				<div class="modal-header bg-default">
 					<span class="glyphicon glyphicon-user"></span>
 						Cadastrar Despesa Variavel
 				</div>		
@@ -126,6 +154,6 @@
 				</div>			
 			</div> 
 		</div>
-
+	</div>
 </body>
 </html>

@@ -1,0 +1,44 @@
+package br.com.brq.financialhealth.util;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import antlr.Utils;
+import br.com.brq.financialhealth.persistence.DAOUsuario;
+
+public class CalculoIdade {
+	
+	Utils util = new Utils();
+	DAOUsuario usuario = new DAOUsuario();
+	
+
+	public static int calculaIdade(String dataNasc, String pattern){
+		
+		DateFormat sdf = new SimpleDateFormat(pattern);
+		
+		Date dataNascInput = null;
+		
+		try{
+			dataNascInput = sdf.parse(dataNasc);
+		}catch(Exception e){
+		
+		}
+		
+		Calendar dateOfBirth = new GregorianCalendar();
+		
+		Calendar today = Calendar.getInstance();
+		
+		int idade = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
+		
+		dateOfBirth.add(Calendar.YEAR, idade);
+
+		if(today.before(dateOfBirth)){
+			idade--;
+		}
+		return idade;
+	}
+
+}

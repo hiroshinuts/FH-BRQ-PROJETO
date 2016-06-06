@@ -15,9 +15,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
+@NamedQueries(
+		{
+			@NamedQuery(name=Usuario.FIND_LOGIN,
+					query = "select u from Usuario as u where u.cpf = :p1 and u.senha = :p2")
+		}
+		)
 public class Usuario {
 	
-	
+	public static final String FIND_LOGIN = "usuario.findlogin";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

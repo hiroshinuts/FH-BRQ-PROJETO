@@ -30,7 +30,7 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 	
 	public List<Investimento> findByData(Date dateIni, Date dateFim ) throws Exception{
 		
-session = HibernateUtil.getSessionFactory().openSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 		
 		query = session.getNamedQuery(Investimento.FINDBY_DATA);
 		query.setDate("d1", dateIni);

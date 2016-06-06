@@ -19,7 +19,14 @@
 <script type="text/javascript" src="/FinancialHealth/js/bootstrap.min.js"></script>
 
 </head>
-<body>
-		ANALISE = GRAFICOS - MOSTRAR RESULTADOS
+<body class="container">
+	
+	<div class="col-md-12">
+	<jsp:include page="/template/topo.jsp"></jsp:include>
+	
+		MOSTRAR GRAFICOS - LISTA - 
+	
+	</div>
+	
 </body>
 </html>
