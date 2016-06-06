@@ -20,8 +20,8 @@ import javax.persistence.Table;
 			@NamedQuery(name = DespesaVariavel.FINDBY_NOME,
 					query = "select desv from DespesaVariavel as desv where desv.nome like :p1 AND "
 							+ "id=usuario order by desv.nome"),
-			//@NamedQuery(name = DespesaVariavel.FINDBY_DATA,
-			//		query = "select dv from DespesaVariavel as dv where dv.datadespesavariavel between :d1 and :d2 AND id=usuario")
+			@NamedQuery(name = DespesaVariavel.FINDBY_DATA,
+					query = "select dv from DespesaVariavel as dv where dv.dataDespesaVariavel between :d1 and :d2 AND id=usuario")
 		}
 		)
 public class DespesaVariavel {

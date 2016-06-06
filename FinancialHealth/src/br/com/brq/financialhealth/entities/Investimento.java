@@ -20,8 +20,8 @@ import javax.persistence.Table;
 			@NamedQuery(name = Investimento.FINDBY_NOME,
 					query = "select inv from Investimento as inv where inv.nome like :p1 AND "
 							+ " id=usuario order by inv.nome"),
-		//	@NamedQuery(name = Investimento.FINDBY_DATA,
-		//			query = "select du from Investimento as du where du.datainvestimento between :d1 and :d2 AND id=idusuario order by du.datainvestimento")
+			@NamedQuery(name = Investimento.FINDBY_DATA,
+					query = "select du from Investimento as du where du.dataInvestimento between :d1 and :d2 AND id=idusuario")
 			
 		}
 		)

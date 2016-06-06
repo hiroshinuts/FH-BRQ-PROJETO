@@ -34,8 +34,8 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 		session = HibernateUtil.getSessionFactory().openSession();
 
 		query = session.getNamedQuery(DespesaVariavel.FINDBY_DATA);
-		query.setDate("d1", dateIni);
-		query.setDate("d2", dateFim);
+		query.setDate("dfx1", dateIni);
+		query.setDate("dfx2", dateFim);
 
 		@SuppressWarnings("unchecked")
 		List<DespesaFixa> lista = query.list();
