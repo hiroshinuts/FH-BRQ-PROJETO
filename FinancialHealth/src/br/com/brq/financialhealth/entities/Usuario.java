@@ -12,6 +12,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "usuario")
@@ -38,7 +40,8 @@ public class Usuario {
 
 	@Column(name = "cpf", length = 50, nullable = false, unique = true)
 	private String cpf;
-
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "datanascimento", nullable = false)
 	private Date dataNascimento;
 

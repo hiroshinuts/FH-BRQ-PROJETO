@@ -1,13 +1,16 @@
 package br.com.brq.financialhealth.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.brq.financialhealth.entities.Investimento;
+import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
 import br.com.brq.financialhealth.persistence.DAOUsuario;
 import br.com.brq.financialhealth.util.FormatacaoData;
@@ -35,8 +38,10 @@ public class ControleInvestimento extends HttpServlet {
 
     			DAOUsuario daoUsuario = new DAOUsuario();
     			
-    			Integer idUsuario = Integer.parseInt(request.getParameter("usuario"));
-    			inv.setUsuario(daoUsuario.findById(idUsuario));
+    			HttpSession session = request.getSession();
+    			Usuario u = (Usuario) session.getAttribute("usuariologado");
+    			
+    			inv.setUsuario(u);
     			
     			DAOInvestimento di = new DAOInvestimento();
     			di.saveOrUpdate(inv);

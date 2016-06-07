@@ -7,10 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.brq.financialhealth.entities.DespesaFixa;
+import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.DAODespesaFixa;
-import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOUsuario;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
@@ -31,8 +32,11 @@ public class ControleDespesaFixa extends HttpServlet {
     			df.setDataDespesaFixa(FormatacaoData.convertToDate(request.getParameter("datadespesafixa")));
     			
     			DAOUsuario daoUsuario = new DAOUsuario();
-    			Integer idUsuario = Integer.parseInt(request.getParameter("usuario"));
-    			df.setUsuario(daoUsuario.findById(idUsuario));
+    			
+    			HttpSession session = request.getSession();
+    			Usuario u = (Usuario) session.getAttribute("usuariologado");
+    			
+    			df.setUsuario(u);
     			
     			DAODespesaFixa daoDv = new DAODespesaFixa();
         		daoDv.saveOrUpdate(df);

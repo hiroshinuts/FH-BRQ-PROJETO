@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "despesafixa")
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 					query = "select desf from DespesaFixa as desf where desf.nome like :p1 AND "
 							+ "id=usuario order by desf.nome"),
 			@NamedQuery(name = DespesaFixa.FINDBY_DATA,
-					query = "select datadf from DespesaFixa as datadf where datadf.dataDespesaFixa between :dfx1 and :dfx2 and id=usuario" )
+					query = "select datadf from DespesaFixa as datadf inner join datadf.usuario as u where datadf.dataDespesaFixa between :dfx1 and :dfx2 and u.id=usuario" )
 		}
 		)
 public class DespesaFixa {
@@ -40,6 +42,7 @@ public class DespesaFixa {
 	@Column(name = "valor", length = 50, nullable = false)
 	private Double valor;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name= "datadespesafixa", nullable = false)
 	private Date dataDespesaFixa;
 	

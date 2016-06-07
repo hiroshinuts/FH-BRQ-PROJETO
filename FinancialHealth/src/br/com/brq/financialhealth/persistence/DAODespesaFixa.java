@@ -1,11 +1,13 @@
 package br.com.brq.financialhealth.persistence;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;import java.util.GregorianCalendar;
 import java.util.List;
 
 import br.com.brq.financialhealth.entities.DespesaFixa;
 import br.com.brq.financialhealth.entities.DespesaVariavel;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
+import br.com.brq.financialhealth.util.FormatacaoData;
 import br.com.brq.financialhealth.util.HibernateUtil;
 
 public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
@@ -42,6 +44,24 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 
 		return lista;
 
+	}
+	
+	public static void main(String[] args) {
+		
+		DAODespesaFixa dao = new DAODespesaFixa();
+		try {
+			dao.findByData(FormatacaoData.convertToDate("01/10/1900"), FormatacaoData.convertToDate("02/10/4000"));
+			SimpleDateFormat sdf = new SimpleDateFormat();
+			//dao.findByData(sdf.parse("02/01/1900"), sdf.parse("01/01/2050"));
+			
+			//dao.findByData(sdf.format("02/01/1900", "02/01/1900"));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(dao);
+		
 	}
 
 }

@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "investimento")
@@ -41,6 +43,7 @@ public class Investimento {
 	@Column(name = "valor", length = 50, nullable = false)
 	private Double valor;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "datainvestimento", nullable = false)
 	private Date dataInvestimento;
 	

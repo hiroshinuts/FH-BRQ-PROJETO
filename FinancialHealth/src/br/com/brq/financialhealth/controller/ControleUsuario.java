@@ -32,7 +32,7 @@ public class ControleUsuario extends HttpServlet {
     		
     		String senha = request.getParameter("senha");
     		String senhaConfirm = request.getParameter("senhaconfirm");
-    		String destino = "/logado/indexlogado.jsp";
+    		String destino = "login.jsp";
     		Usuario user = new Usuario();
     		DAOUsuario u = new DAOUsuario();
     		
@@ -48,6 +48,10 @@ public class ControleUsuario extends HttpServlet {
     			user.setSenha(Criptografia.encriptarSenha(request.getParameter("senha")));
     			
     			u.saveOrUpdate(user);
+    			
+    			HttpSession session = request.getSession();
+				session.setAttribute("usuariologado", u);
+				//request.getRequestDispatcher("/logado/indexlogado.jsp").forward(request, response);
     			
     			
     			request.setAttribute("mensagem", "Usuario " + user.getNome() + " gravado com sucesso!");

@@ -1,5 +1,0 @@
-package br.com.financialhealth.persistence.generics;
-
-public abstract class DAOGeneric<T, K extends Serializable> {
-
-}
