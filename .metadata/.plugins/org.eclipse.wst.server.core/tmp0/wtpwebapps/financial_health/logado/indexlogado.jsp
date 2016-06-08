@@ -40,12 +40,12 @@
 			<br/><br/><br/>
 			
 		<div class="col-md-3 panel text-center">
-			<a href="/financial_health/logado/analise.jsp" class="btn btn-default btn-block" >Análise</a> 
+			<a href="/financial_health/logado/analise.jsp" class="btn btn-default btn-block" >Busca/Periodo</a> 
 		</div>
 		
 		
 		 <div class="col-md-3 panel text-center"> 
-	 		<a href="ControleUsuario?action=logout" class="btn btn-danger btn-block">
+	 		<a href="/financial_health/ControleUsuario?action=logout" class="btn btn-danger btn-block">
 	 			<span class="glyphicon glyphicon-off"></span> Logout
 	 		</a>
 	  	 </div> 
@@ -65,7 +65,7 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formularioinvestimento" method="post" action="ControleInvestimento?action=cadastrar">
+					<form name="formularioinvestimento" method="post" action="/financial_health/ControleInvestimento?action=cadastrar">
 						
 						<label>Nome do Investimento</label>
 						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
@@ -100,7 +100,7 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formulariodespesafixa" method="post" action="ControleDespesaFixa?action=cadastrar">
+					<form name="formulariodespesafixa" method="post" action="/financial_health/ControleDespesaFixa?action=cadastrar">
 						
 						<label>Nome da Despesa</label>
 						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
@@ -134,7 +134,7 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formulariodespesavariavel" method="post" action="ControleDespesaVariavel?action=cadastrar">
+					<form name="formulariodespesavariavel" method="post" action="/financial_health/ControleDespesaVariavel?action=cadastrar">
 						<label>Nome da Despesa</label>
 						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
 						<br/>

@@ -30,17 +30,20 @@
 	
 		MOSTRAR GRAFICOS - LISTA - 
 		
-		<form name="formulario" method="post" action="">
+		<form name="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
 		<label>Data Inicio</label>
-		<input type="date" />
+		<input type="date"  name="dateini" id="dateini"/>
 		<label>Data Fim</label>
-		<input type="date" />
+		<input type="date" name="datefim" id="datefim"/>
+		<input type="submit">
 		
 		</form>
 			<p>
 				${mensagem}
 			</p>
 			
+			
+	<label>Investimento</label>		
 	<table class="table">
 		<thead>
 			<tr>
@@ -51,12 +54,59 @@
 			</tr>
 		</thead>
 		<tbody>
+	<c:forEach items="${dadosinv}" var="inv">
 				<tr>
-					<td>  </td>
-					<td>  </td>
-					<td>  </td>
-					<td>  </td>
+					<td>${inv.idInvestimento }   </td>
+					<td>${inv.nome }  </td>
+					<td>${inv.valor }  </td>
+					<td>${inv.dataInvestimento }  </td>
 				</tr>
+	</c:forEach>
+		</tbody>
+	</table>
+	
+	<label>Despesa Fixa</label>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+	
+	<c:forEach items="${dadosdf}" var="df">
+				<tr>
+					<td>${df.idDespesaFixa }   </td>
+					<td>${df.nome }  </td>
+					<td>${df.valor }  </td>
+					<td>${df.dataDespesaFixa }  </td>
+				</tr>
+	</c:forEach>
+		</tbody>
+	</table>
+	
+	<label>Despesa Variavel</label>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Código</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+	<c:forEach items="${dadosdv}" var="dv">
+				<tr>
+					<td>${dv.idDespesaVariavel }   </td>
+					<td>${dv.nome }  </td>
+					<td>${dv.valor }  </td>
+					<td>${dv.dataDespesaVariavel }  </td>
+				</tr>
+	</c:forEach>
 		</tbody>
 	</table>
 	

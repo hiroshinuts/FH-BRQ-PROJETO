@@ -56,7 +56,7 @@ required : "Por favor,informe o nome.."
 
 	<div class="col-md-4">
 	
-			<form id="formulario" name="formulario" method="post" action="ControleUsuario?action=cadastrarUsuario">
+			<form id="formulario" name="formulario" method="post" action="/financial_health/ControleUsuario?action=cadastrarUsuario">
 			
 				<label>Nome Completo:</label><br/>
 				<input type="text" id="nome" name="nome" class="form-control required" placeholder="Digite aqui"/>

@@ -20,7 +20,7 @@
 </head>
 <body class="container">
 
-<jsp:include page="template/topo.jsp"></jsp:include>
+<jsp:include page="/template/topo.jsp"></jsp:include>
 
 	 <div class="well well-sm">
 		<h2> Área de Acesso Restrito</h2>
@@ -33,7 +33,7 @@
 	 	<br/>	 
 	   </div> 
 
-	<form name = "formulario" method="post" action="ControleUsuario?action=login">
+	<form name = "formulario" method="post" action="/financial_health/ControleUsuario?action=login">
 		<div class="col-md-12" >
 		
 			<div class="col-md-5">

@@ -50,10 +50,10 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 		
 		DAODespesaFixa dao = new DAODespesaFixa();
 		try {
-			Calendar c = new GregorianCalendar(1220, 2, 3);
-			Calendar c2 = new GregorianCalendar(4000, 2, 3);
+			Calendar c = new GregorianCalendar(1220, 2, 1);
+			Calendar c2 = new GregorianCalendar(4000, 2, 1);
 			
-			for(DespesaFixa d : dao.findByData(c.getTime(), c2.getTime(), 3)){
+			for(DespesaFixa d : dao.findByData(c.getTime(), c2.getTime(), 1)){
 				System.out.println(d.getNome());
 			}
 			

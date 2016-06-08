@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
 					query = "select inv from Investimento as inv where inv.nome like :p1 AND "
 							+ " id=usuario order by inv.nome"),
 			@NamedQuery(name = Investimento.FINDBY_DATA,
-					query = "select du from Investimento as du where du.dataInvestimento between :d1 and :d2 AND id=idusuario"),
+					query = "select dv from Investimento as dv inner join dv.usuario as u where dv.dataInvestimento between :d1 and :d2 and u.id=:usuario"),
 			
 			@NamedQuery(name =Investimento.SOMABY_DATA,
 					query = "select sum(ddi.valor) from Investimento as ddi inner join ddi.usuario as u where ddi.dataInvestimento between :d1 and :d2 and u.id= :usuario")

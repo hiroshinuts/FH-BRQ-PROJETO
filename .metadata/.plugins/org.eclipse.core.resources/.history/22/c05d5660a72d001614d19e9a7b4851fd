@@ -1,0 +1,87 @@
+package br.com.brq.financialhealth.controller;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import br.com.brq.financialhealth.entities.DespesaFixa;
+import br.com.brq.financialhealth.entities.DespesaVariavel;
+import br.com.brq.financialhealth.entities.Investimento;
+import br.com.brq.financialhealth.entities.Usuario;
+import br.com.brq.financialhealth.persistence.DAODespesaFixa;
+import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
+import br.com.brq.financialhealth.persistence.DAOInvestimento;
+import br.com.brq.financialhealth.util.FormatacaoData;
+
+@WebServlet("/ControleBuscaPorData")
+public class ControleBuscaPorData extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public ControleBuscaPorData() {
+        super();
+    }
+
+    
+    protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	String action = request.getParameter("action");
+    	
+    	//if(action != null){
+    		
+    		if(action.equalsIgnoreCase("buscadata")){
+    			try{
+    				
+    				System.out.println("aaaaa");
+    			HttpSession session = request.getSession();
+    			Usuario u = (Usuario) session.getAttribute("usuariologado");
+    			
+
+    			DAOInvestimento daoInv = new DAOInvestimento();
+    			DAODespesaFixa daoDF = new DAODespesaFixa();
+    			DAODespesaVariavel daoDV = new DAODespesaVariavel();
+    			
+    			
+    			Date dateIni = FormatacaoData.convertToDate(request.getParameter("dateini"));
+    			Date dateFim = FormatacaoData.convertToDate(request.getParameter("datefim"));
+    			
+    			
+    			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
+    			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
+    			List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+    			
+    			request.setAttribute("dadosinv", listaInv);
+    			request.setAttribute("dadosdfixa", listaDF);
+    			request.setAttribute("dadosdv", listaDV);
+    			
+    			request.setAttribute("mensagem", "ConsultaRealizadacomsucesso");
+    			}catch(Exception e){
+    				e.printStackTrace();
+    			}finally{
+    				request.getRequestDispatcher("/logado/analise.jsp").forward(request, response);
+    			}
+    			
+    			
+    		}
+    		
+    	}
+    
+    
+    //}
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
+	
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
+	}
+
+}

@@ -1,0 +1,15 @@
+package br.com.brq.financialhealth.services;
+
+public class Estimativa {
+
+	public Double lancaFuturo(){
+		
+		int
+		
+		
+		
+		
+		return 0.0;
+	}
+	
+}
