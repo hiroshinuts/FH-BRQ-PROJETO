@@ -3,6 +3,7 @@ package br.com.brq.financialhealth.persistence;
 import java.util.Date;
 import java.util.List;
 
+import br.com.brq.financialhealth.entities.DespesaVariavel;
 import br.com.brq.financialhealth.entities.Investimento;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;
@@ -42,6 +43,19 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		
 		return lista;
 		
+	}
+	
+	public Double somaByData(Date dateIni, Date dateFim, Integer idUsuario) throws Exception{
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+		query = session.getNamedQuery(Investimento.SOMABY_DATA);
+		query.setDate("d1", dateIni);
+		query.setDate("d2", dateFim);
+		query.setInteger("usuario", idUsuario);
+		
+		Double somatorio = (Double) query.uniqueResult();
+		
+		return somatorio;
 	}
 
 	

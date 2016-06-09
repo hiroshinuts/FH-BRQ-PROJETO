@@ -6,15 +6,15 @@ public class CalculoPorIdade {
 	
 	
 	class GuardaValores{
-		public int idade;
-		public double investimento;
-		public double despesaFixa;
-		public double despesaVariavel;
+		public Integer idade;
+		public Double investimento;
+		public Double despesaFixa;
+		public Double despesaVariavel;
 		public Object object[];
 	}
 
 		
-	Object[] calculaTotal(int idade, double salario){
+	public Object[] calculaTotal(int idade, Double salario){
 
 		GuardaValores gv = new GuardaValores();
 		gv.object =new Object[3];
@@ -23,7 +23,7 @@ public class CalculoPorIdade {
 			
 			gv.investimento = salario * 0.1;
 			gv.despesaFixa = salario * 0.9;
-			gv.despesaVariavel = 0;
+			gv.despesaVariavel = 0.0;
 			
 		}else if(idade >=50 && idade <= 65){
 			
@@ -52,9 +52,13 @@ public class CalculoPorIdade {
 			
 			gv.investimento = salario * 1.0;
 			gv.despesaFixa = salario * 0;
-			gv.despesaVariavel = 0;
+			gv.despesaVariavel = 0.0;
 			
 		}
+		
+		Double total = gv.investimento + gv.despesaFixa + gv.despesaVariavel;
+		
+		
 		
 		gv.object[0] = gv.investimento;
 		gv.object[1] = gv.despesaFixa;
@@ -63,11 +67,13 @@ public class CalculoPorIdade {
 		return gv.object;
 		
 	}
+
+
 	
 	public static void main(String[] args) {
 
 		CalculoPorIdade ci = new CalculoPorIdade();
-		Object array[] = ci.calculaTotal(20, 3000);
+		Object array[] = ci.calculaTotal(20, 3000.0);
 		System.out.println(ci);
 		
 		for(int i = 0 ; i < array.length; i++){

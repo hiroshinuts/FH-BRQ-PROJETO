@@ -14,7 +14,8 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 	public DAODespesaFixa() {
 		super(DespesaFixa.class);
 	}
-
+	
+	
 	public List<DespesaFixa> findByNome(String nome) throws Exception {
 
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -46,6 +47,22 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 
 	}
 	
+
+	
+	public Double somaByData(Date dateIni, Date dateFim, Integer idUsuario) throws Exception{
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+		query = session.getNamedQuery(DespesaFixa.SOMABY_DATA);
+		query.setDate("d1", dateIni);
+		query.setDate("d2", dateFim);
+		query.setInteger("usuario", idUsuario);
+		
+		Double somatorio = (Double) query.uniqueResult();
+		
+		return somatorio;
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		DAODespesaFixa dao = new DAODespesaFixa();
@@ -53,9 +70,12 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 			Calendar c = new GregorianCalendar(1220, 2, 1);
 			Calendar c2 = new GregorianCalendar(4000, 2, 1);
 			
-			for(DespesaFixa d : dao.findByData(c.getTime(), c2.getTime(), 1)){
-				System.out.println(d.getNome());
-			}
+			//for(DespesaFixa d : dao.findByData(c.getTime(), c2.getTime(), 1)){
+				//System.out.println(d.getNome());
+			//}
+			
+			Double resultado = dao.somaByData(c.getTime(), c2.getTime(), 3);
+			System.out.println(resultado);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

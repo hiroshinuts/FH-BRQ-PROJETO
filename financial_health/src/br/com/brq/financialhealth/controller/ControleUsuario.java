@@ -1,6 +1,10 @@
 package br.com.brq.financialhealth.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,13 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.chainsaw.Main;
-
+import br.com.brq.financialhealth.entities.DespesaFixa;
+import br.com.brq.financialhealth.entities.DespesaVariavel;
+import br.com.brq.financialhealth.entities.Investimento;
 import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.DAODespesaFixa;
 import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
 import br.com.brq.financialhealth.persistence.DAOUsuario;
+import br.com.brq.financialhealth.services.CalculoPorIdade;
+import br.com.brq.financialhealth.services.Idade;
 import br.com.brq.financialhealth.util.Criptografia;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
@@ -87,6 +94,64 @@ public class ControleUsuario extends HttpServlet {
     				
     				HttpSession session = request.getSession();
     				session.setAttribute("usuariologado", u);
+    				
+    				DAOInvestimento daoInv = new DAOInvestimento();
+        			DAODespesaFixa daoDF = new DAODespesaFixa();
+        			DAODespesaVariavel daoDV = new DAODespesaVariavel();
+        			
+        			Calendar c =  Calendar.getInstance();
+        			
+        			int ano = c.get(Calendar.YEAR);
+        			int mes = c.get(Calendar.MONTH);
+        			int dia = 1;
+        			
+        			c.set(ano, mes, dia);
+        			
+        			int numeroDias = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        			
+        			Date dateIni = c.getTime();
+        			
+        			
+        			c.add(Calendar.DAY_OF_MONTH, numeroDias-1);
+        			
+        			Date dateFim = c.getTime();
+        			
+        			
+        			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
+        			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
+        			List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaInv = daoInv.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			
+        			session.setAttribute("dinv", listaInv);
+        			session.setAttribute("ddf", listaDF);
+        			session.setAttribute("ddv", listaDV);
+        			session.setAttribute("somainv", somaInv);
+        			session.setAttribute("somadf", somaDF);
+        			session.setAttribute("somadv", somaDV);
+    				
+        			
+        			//METODO PARA GRAFICO IDEAL // 4 informacoes 
+        			
+        			Idade idd = new Idade(c.getTime());
+        			Integer idade = idd.calcIdade(u.getDataNascimento());
+        			CalculoPorIdade valorIdeal = new CalculoPorIdade();
+        			Object valores[] = valorIdeal.calculaTotal(idade, u.getRendimentoMensalLiquido());
+        			
+        			List<Double> listaValores = new ArrayList<>();  
+        			
+        			for(int i=0; i < valores.length; i++){
+        				
+        				Double valor = (Double) valores[i];
+        				listaValores.add(valor);
+        			}
+
+        			session.setAttribute("valoresGraficoIdeal", listaValores);
+        			
+        			// FIM INFORMACOES GRAFICO
+        			
+    				
     				request.getRequestDispatcher("/logado/indexlogado.jsp").forward(request, response);
     				
     			}else{

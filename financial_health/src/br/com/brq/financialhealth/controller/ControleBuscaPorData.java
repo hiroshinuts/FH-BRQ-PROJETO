@@ -33,12 +33,11 @@ public class ControleBuscaPorData extends HttpServlet {
     	
     	String action = request.getParameter("action");
     	
-    	//if(action != null){
+    	if(action != null){
     		
     		if(action.equalsIgnoreCase("buscadata")){
     			try{
     				
-    				System.out.println("aaaaa");
     			HttpSession session = request.getSession();
     			Usuario u = (Usuario) session.getAttribute("usuariologado");
     			
@@ -55,10 +54,16 @@ public class ControleBuscaPorData extends HttpServlet {
     			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
     			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
     			List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+    			Double somaInv = daoInv.somaByData(dateIni, dateFim, u.getIdUsuario());
+    			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
+    			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
     			
-    			request.setAttribute("dadosinv", listaInv);
-    			request.setAttribute("dadosdf", listaDF);
-    			request.setAttribute("dadosdv", listaDV);
+    			session.setAttribute("somainva", somaInv);
+    			session.setAttribute("somadfa", somaDF);
+    			session.setAttribute("somadav", somaDV);
+    			session.setAttribute("dadosinv", listaInv);
+    			session.setAttribute("dadosdf", listaDF);
+    			session.setAttribute("dadosdv", listaDV);
     			
     			request.setAttribute("mensagem", "ConsultaRealizadacomsucesso");
     			}catch(Exception e){
@@ -71,9 +76,11 @@ public class ControleBuscaPorData extends HttpServlet {
     		}
     		
     	}
+    	
+    }
+    		
     
     
-    //}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);

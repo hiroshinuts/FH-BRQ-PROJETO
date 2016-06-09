@@ -47,6 +47,19 @@ public List<DespesaVariavel> findByNome(String nome) throws Exception{
 		
 	}
 	
+	public Double somaByData(Date dateIni, Date dateFim, Integer idUsuario) throws Exception{
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+		query = session.getNamedQuery(DespesaVariavel.SOMABY_DATA);
+		query.setDate("d1", dateIni);
+		query.setDate("d2", dateFim);
+		query.setInteger("usuario", idUsuario);
+		
+		Double somatorio = (Double) query.uniqueResult();
+		
+		return somatorio;
+	}
+	
 public static void main(String[] args) {
 		
 		DAODespesaVariavel dao = new DAODespesaVariavel();

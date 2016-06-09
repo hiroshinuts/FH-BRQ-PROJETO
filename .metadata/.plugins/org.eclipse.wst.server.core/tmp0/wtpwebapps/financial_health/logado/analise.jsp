@@ -20,11 +20,14 @@
 
 </head>
 <body class="container">
+
 	
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
-	<h3>Cadastro de Usuario</h3>
+	Id do Usuario: <label> ${usuariologado.idUsuario} </label> <br/>
+  	Usuario Autenticado: <label> ${usuariologado.nome} </label> <br/>
+	<h3>Lançamentos por data</h3>
 		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
 	<hr/>
 	
@@ -42,24 +45,29 @@
 				${mensagem}
 			</p>
 			
-			
 	<label>Investimento</label>		
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Código</th>
+				<th>id</th>
 				<th>Nome</th>
 				<th>Valor</th>
 				<th>Data</th>
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${dadosinv}" var="inv">
+	<c:forEach items="${sessionScope.dadosinv}" var="inv">
 				<tr>
 					<td>${inv.idInvestimento }   </td>
 					<td>${inv.nome }  </td>
-					<td>${inv.valor }  </td>
-					<td>${inv.dataInvestimento }  </td>
+					<td>
+					<fmt:formatNumber value="${inv.valor}" type="currency">
+  					</fmt:formatNumber>
+					  </td>
+					<td>
+					${inv.dataInvestimento}
+					<fmt:formatDate value="${dv.dataInvestimento}" type="date" pattern="dd/MM/yyyy" />
+					  </td>
 					<td>
 						<a href="/financial_health/ControleInvestimento?action=editar&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
 							<spam class="glyphicon glyphicon-pencil"></spam>
@@ -79,7 +87,9 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
+				<th>
+				<fmt:formatNumber value="${sessionScope.somainva}" type="currency">
+  				</fmt:formatNumber></th>
 				<th></th>
 			</tr>
 		</tfoot>
@@ -89,7 +99,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Código</th>
+				<th>id</th>
 				<th>Nome</th>
 				<th>Valor</th>
 				<th>Data</th>
@@ -97,11 +107,14 @@
 		</thead>
 		<tbody>
 	
-	<c:forEach items="${dadosdf}" var="df">
+	<c:forEach items="${sessionScope.dadosdf}" var="df">
 				<tr>
 					<td>${df.idDespesaFixa }   </td>
 					<td>${df.nome }  </td>
-					<td>${df.valor }  </td>
+					<td>
+					<fmt:formatNumber value="${df.valor}" type="currency">
+  					</fmt:formatNumber>
+					</td>
 					<td>${df.dataDespesaFixa }  </td><td>
 						<a href="/financial_health/ControleDespesaFixa?action=editar&id=${df.idDespesaFixa}" class="btn btn-default btn-sm">
 							<spam class="glyphicon glyphicon-pencil"></spam>
@@ -121,29 +134,39 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
+				<th>
+				 <fmt:formatNumber value="${sessionScope.somadfa}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
 				<th></th>
 			</tr>
 		</tfoot>
 	</table>
-	
+	</div>
 	<label>Despesa Variavel</label>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Código</th>
+				<th>id</th>
 				<th>Nome</th>
 				<th>Valor</th>
 				<th>Data</th>
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${dadosdv}" var="dv">
+	<c:forEach items="${sessionScope.dadosdv}" var="dv">
 				<tr>
 					<td>${dv.idDespesaVariavel }   </td>
 					<td>${dv.nome }  </td>
-					<td>${dv.valor }  </td>
-					<td>${dv.dataDespesaVariavel }  </td>
+					<td>
+					<fmt:formatNumber value="${dv.valor}" type="currency">
+  					</fmt:formatNumber>
+					  </td>
+					<td>
+					${dv.dataDespesaVariavel}"
+					
+					
+					  </td>
 					<td>
 						<a href="/financial_health/ControleDespesaVariavel?action=editar&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
 							<spam class="glyphicon glyphicon-pencil"></spam>
@@ -154,7 +177,7 @@
 						<a href="/financial_health/ControleDespesaVariavel?action=excluir&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
 						 onclick="return confirm('Deseja excluir este item?');" >
 							<spam class="glyphicon glyphicon-trash"></spam>	 
-						 </a>
+0						 </a>
 					</td>
 				</tr>
 	</c:forEach>
@@ -163,12 +186,12 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
-				<th></th>
+				<th>
+				 <fmt:formatNumber value="${sessionScope.somadva}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
 			</tr>
 		</tfoot>
 	</table>
-	</div>
-	
 </body>
 </html>

@@ -23,6 +23,9 @@
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
+		Id do Usuario: <label> ${usuariologado.idUsuario} </label> <br/>
+  		Usuario Autenticado: <label> ${usuariologado.nome} </label> <br/>
+	
 		<h4>${mensagem}</h4>
 		<div class="col-md-3 panel text-center">
 			<a href="#" data-target="#janelainvestimento" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Investimento</a>
@@ -156,6 +159,12 @@
 		</div>
 	</div>
 	
+	<!-- GRAFICO VALORES IDEAL -->
+	
+	
+
+<!-- FIM GRAFICO IDEAL -->
+	
 	<label>Investimento</label>		
 	<table class="table">
 		<thead>
@@ -167,7 +176,7 @@
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${dadosinv}" var="inv">
+	<c:forEach items="${sessionScope.dinv}" var="inv">
 				<tr>
 					<td>${inv.idInvestimento }   </td>
 					<td>${inv.nome }  </td>
@@ -192,7 +201,10 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
+				<th>
+				<fmt:formatNumber value="${sessionScope.somainv}" type="currency">
+  				</fmt:formatNumber>
+  				</th>
 				<th></th>
 			</tr>
 		</tfoot>
@@ -210,7 +222,7 @@
 		</thead>
 		<tbody>
 	
-	<c:forEach items="${dadosdf}" var="df">
+	<c:forEach items="${sessionScope.ddf}" var="df">
 				<tr>
 					<td>${df.idDespesaFixa }   </td>
 					<td>${df.nome }  </td>
@@ -234,7 +246,10 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
+				<th>
+				 <fmt:formatNumber value="${sessionScope.somadf}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
 				<th></th>
 			</tr>
 		</tfoot>
@@ -251,7 +266,7 @@
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${dadosdv}" var="dv">
+	<c:forEach items="${sessionScope.ddv}" var="dv">
 				<tr>
 					<td>${dv.idDespesaVariavel }   </td>
 					<td>${dv.nome }  </td>
@@ -276,7 +291,10 @@
 			<tr>
 				<th></th>
 				<th>Total:</th>
-				<th>Resultado AINDA A FAZER</th>
+				<th>
+				 <fmt:formatNumber value="${sessionScope.somadv}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
 				<th></th>
 			</tr>
 		</tfoot>

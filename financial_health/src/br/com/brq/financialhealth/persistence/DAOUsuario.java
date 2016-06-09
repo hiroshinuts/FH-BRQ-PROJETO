@@ -27,5 +27,10 @@ public class DAOUsuario extends DAOGeneric<Usuario, Integer> {
 		return u;
 	
 	}
+	@Override
+	public void delete(Usuario u) throws Exception {
+		// TODO Auto-generated method stub
+		super.delete(u);
+	}
 
 }
