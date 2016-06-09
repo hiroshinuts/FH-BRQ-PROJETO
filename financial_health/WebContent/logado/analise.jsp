@@ -60,9 +60,29 @@
 					<td>${inv.nome }  </td>
 					<td>${inv.valor }  </td>
 					<td>${inv.dataInvestimento }  </td>
+					<td>
+						<a href="/financial_health/ControleInvestimento?action=editar&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
+							<spam class="glyphicon glyphicon-pencil"></spam>
+						</a>
+							
+					
+					
+						<a href="/financial_health/ControleInvestimento?action=excluir&id=${inv.idInvestimento}" class="btn btn-danger btn-sm
+						 onclick="return confirm('Deseja excluir este item?');" >
+							<spam class="glyphicon glyphicon-trash"></spam>	 
+						 </a>
+					</td>
 				</tr>
 	</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>Resultado AINDA A FAZER</th>
+				<th></th>
+			</tr>
+		</tfoot>
 	</table>
 	
 	<label>Despesa Fixa</label>
@@ -82,10 +102,29 @@
 					<td>${df.idDespesaFixa }   </td>
 					<td>${df.nome }  </td>
 					<td>${df.valor }  </td>
-					<td>${df.dataDespesaFixa }  </td>
+					<td>${df.dataDespesaFixa }  </td><td>
+						<a href="/financial_health/ControleDespesaFixa?action=editar&id=${df.idDespesaFixa}" class="btn btn-default btn-sm">
+							<spam class="glyphicon glyphicon-pencil"></spam>
+						</a>
+							
+					
+					
+						<a href="/financial_health/ControleDespesaFixa?action=excluir&id=${df.idDespesaFixa}" class="btn btn-danger btn-sm
+						 onclick="return confirm('Deseja excluir este item?');" >
+							<spam class="glyphicon glyphicon-trash"></spam>	 
+						 </a>
+					</td>
 				</tr>
 	</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>Resultado AINDA A FAZER</th>
+				<th></th>
+			</tr>
+		</tfoot>
 	</table>
 	
 	<label>Despesa Variavel</label>
@@ -105,11 +144,30 @@
 					<td>${dv.nome }  </td>
 					<td>${dv.valor }  </td>
 					<td>${dv.dataDespesaVariavel }  </td>
+					<td>
+						<a href="/financial_health/ControleDespesaVariavel?action=editar&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
+							<spam class="glyphicon glyphicon-pencil"></spam>
+						</a>
+							
+					
+					
+						<a href="/financial_health/ControleDespesaVariavel?action=excluir&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
+						 onclick="return confirm('Deseja excluir este item?');" >
+							<spam class="glyphicon glyphicon-trash"></spam>	 
+						 </a>
+					</td>
 				</tr>
 	</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>Resultado AINDA A FAZER</th>
+				<th></th>
+			</tr>
+		</tfoot>
 	</table>
-	
 	</div>
 	
 </body>

@@ -1,11 +1,9 @@
 INDEX VERSION 1.3+C:\Users\Hiro\Desktop\workspaceprojeto\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 625290303.index
-3658306926.index
-2028051956.index
-281842975.index
-2669760912.index
-727097855.index
 3198797753.index
-1436835371.index
+3658306926.index
 3346862452.index
 3399547076.index
+2669760912.index
+2028051956.index
+625290303.index
