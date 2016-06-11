@@ -18,7 +18,27 @@
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
 
+<script type="text/javascript">
+
+$(document).ready( //quando a página carregar...
+function(){ //faça..
+//validar o formulário..
+$("#formulario").validate(
+{
+rules:{
+nome : "required"
+				},messages:{
+						nome:{
+							required : "Por favor, informe o nome.."
+							}
+				 }
+			}
+		);
+	}
+);
+</script>
 
 </head>
 <body class="container">
@@ -33,23 +53,25 @@
 		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
 	<hr/>
 	
-		<!-- GRAFICO -->
 		
-		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
-		
-		<!-- FIM GRAFICO -->
-		
-		<form name="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
+		<form name="formulario" id="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
 		<label>Data Inicio</label>
-		<input type="date"  name="dateini" id="dateini"/>
+		<input type="date" class="form-control required"  name="dateini" id="dateini"/>
 		<label>Data Fim</label>
-		<input type="date" name="datefim" id="datefim"/>
+		<input type="date" class="form-control required" name="datefim" id="datefim"/>
 		<input type="submit">
 		
 		</form>
 			<p>
 				${mensagem}
 			</p>
+			
+		<!-- GRAFICO -->
+		
+		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
+		
+		<!-- FIM GRAFICO -->
+		
 			
 	<label>Investimento</label>		
 	<table class="table">
@@ -62,7 +84,7 @@
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${sessionScope.dadosinv}" var="inv">
+	<c:forEach items="${dadosinv}" var="inv">
 				<tr>
 					<td>${inv.idInvestimento }   </td>
 					<td>${inv.nome }  </td>
@@ -74,18 +96,6 @@
 					${inv.dataInvestimento}
 					<fmt:formatDate value="${dv.dataInvestimento}" type="date" pattern="dd/MM/yyyy" />
 					  </td>
-					<td>
-						<a href="/financial_health/ControleInvestimento?action=editar&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
-						</a>
-							
-					
-					
-						<a href="/financial_health/ControleInvestimento?action=excluir&id=${inv.idInvestimento}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
-						 </a>
-					</td>
 				</tr>
 	</c:forEach>
 		</tbody>
@@ -94,7 +104,7 @@
 				<th></th>
 				<th>Total:</th>
 				<th>
-				<fmt:formatNumber value="${sessionScope.somainva}" type="currency">
+				<fmt:formatNumber value="${somainva}" type="currency">
   				</fmt:formatNumber></th>
 				<th></th>
 			</tr>
@@ -113,7 +123,7 @@
 		</thead>
 		<tbody>
 	
-	<c:forEach items="${sessionScope.dadosdf}" var="df">
+	<c:forEach items="${dadosdf}" var="df">
 				<tr>
 					<td>${df.idDespesaFixa }   </td>
 					<td>${df.nome }  </td>
@@ -121,18 +131,9 @@
 					<fmt:formatNumber value="${df.valor}" type="currency">
   					</fmt:formatNumber>
 					</td>
-					<td>${df.dataDespesaFixa }  </td><td>
-						<a href="/financial_health/ControleDespesaFixa?action=editar&id=${df.idDespesaFixa}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
-						</a>
-							
-					
-					
-						<a href="/financial_health/ControleDespesaFixa?action=excluir&id=${df.idDespesaFixa}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
-						 </a>
-					</td>
+					<td>
+					${df.dataDespesaFixa}
+					  </td>
 				</tr>
 	</c:forEach>
 		</tbody>
@@ -141,7 +142,7 @@
 				<th></th>
 				<th>Total:</th>
 				<th>
-				 <fmt:formatNumber value="${sessionScope.somadfa}" type="currency">
+				 <fmt:formatNumber value="${somadfa}" type="currency">
   				 </fmt:formatNumber>
   				 </th>
 				<th></th>
@@ -160,7 +161,7 @@
 			</tr>
 		</thead>
 		<tbody>
-	<c:forEach items="${sessionScope.dadosdv}" var="dv">
+	<c:forEach items="${dadosdv}" var="dv">
 				<tr>
 					<td>${dv.idDespesaVariavel }   </td>
 					<td>${dv.nome }  </td>
@@ -170,21 +171,7 @@
 					  </td>
 					<td>
 					${dv.dataDespesaVariavel}"
-					
-					
 					  </td>
-					<td>
-						<a href="/financial_health/ControleDespesaVariavel?action=editar&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
-						</a>
-							
-					
-					
-						<a href="/financial_health/ControleDespesaVariavel?action=excluir&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
-*						 </a>
-					</td>
 				</tr>
 	</c:forEach>
 		</tbody>
@@ -193,7 +180,7 @@
 				<th></th>
 				<th>Total:</th>
 				<th>
-				 <fmt:formatNumber value="${sessionScope.somadva}" type="currency">
+				 <fmt:formatNumber value="${somadva}" type="currency">
   				 </fmt:formatNumber>
   				 </th>
 			</tr>

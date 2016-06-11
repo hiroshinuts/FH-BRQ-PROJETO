@@ -58,12 +58,12 @@ public class ControleBuscaPorData extends HttpServlet {
     			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
     			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
     			
-    			session.setAttribute("somainva", somaInv);
-    			session.setAttribute("somadfa", somaDF);
-    			session.setAttribute("somadva", somaDV);
-    			session.setAttribute("dadosinv", listaInv);
-    			session.setAttribute("dadosdf", listaDF);
-    			session.setAttribute("dadosdv", listaDV);
+    			request.setAttribute("somainva", somaInv);
+    			request.setAttribute("somadfa", somaDF);
+    			request.setAttribute("somadva", somaDV);
+    			request.setAttribute("dadosinv", listaInv);
+    			request.setAttribute("dadosdf", listaDF);
+    			request.setAttribute("dadosdv", listaDV);
     			
     			request.setAttribute("mensagem", "ConsultaRealizadacomsucesso");
     			}catch(Exception e){

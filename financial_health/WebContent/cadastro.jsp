@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>	
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
 
 <script type="text/javascript">
 
@@ -30,14 +31,14 @@ $("#formulario").validate(
 {
 rules:{
 nome : "required"
-},messages:{
-nome:{
-required : "Por favor,informe o nome.."
-}
-}
-}
-);
-}
+				},messages:{
+						nome:{
+							required : "Por favor, informe o nome.."
+							}
+				 }
+			}
+		);
+	}
 );
 </script>
 

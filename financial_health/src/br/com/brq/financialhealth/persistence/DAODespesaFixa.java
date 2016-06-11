@@ -62,6 +62,25 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 		return somatorio;
 	}
 	
+	@Override
+	public void delete(DespesaFixa obj) throws Exception {
+		session = HibernateUtil.getSessionFactory().openSession();
+		transaction = session.beginTransaction();
+		session.delete(obj);
+		transaction.commit();
+		session.close();
+	
+	}
+	
+	@Override
+	public DespesaFixa findById(Integer id) throws Exception {
+		session = HibernateUtil.getSessionFactory().openSession();
+		DespesaFixa df = (DespesaFixa) session.get(DespesaFixa.class, id);
+		session.close();
+		return df;
+	
+	}
+	
 	
 	public static void main(String[] args) {
 		

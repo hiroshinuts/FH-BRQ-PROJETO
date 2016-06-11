@@ -93,33 +93,84 @@ Calendar c =  Calendar.getInstance();
     		}
     		
     	}
-    	else if(action.equalsIgnoreCase("excluir")){
-    		
-    		try {
-    		
-    			HttpSession session = request.getSession();
-    			Usuario u = (Usuario) session.getAttribute("usuariologado");
-    			
-    			DespesaFixa df = new DespesaFixa();
-    			//df.setIdDespesaFixa(Integer.parseInt(request.getParameter("id")));
-    			//Integer id = Integer.parseInt(u.setIdUsuario(request.getParameter("id"))) ;
-    			
-    			DAODespesaFixa daoDF = new DAODespesaFixa();
-    			daoDF.delete(df);
-    			}
-    			catch(Exception e){
-    				e.printStackTrace();
-    			}
-    			
-    			
-    			
-			finally{
-				request.getRequestDispatcher("/financial_heal/logado/analise.jsp");
-			}
-    		
+    			//elseif
+    	    	else if("excluirdfindex".equalsIgnoreCase(action)){
+    	    		try {
+    	    		HttpSession session = request.getSession();
+    	    		DAODespesaFixa daoDF = new DAODespesaFixa();
+    	    		Integer id = Integer.parseInt(request.getParameter("id"));
+    	    		DespesaFixa i = daoDF.findById(id);
+    	    		daoDF.delete(i);
+    	    		//Recarregar pagina atualizada
+    	    		Calendar c =  Calendar.getInstance();
+    				
+    				int ano = c.get(Calendar.YEAR);
+    				int mes = c.get(Calendar.MONTH);
+    				int dia = 1;
+    				
+    				c.set(ano, mes, dia);
+    				
+    				int numeroDias = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+    				
+    				Date dateIni = c.getTime();
+    				
+    				c.add(Calendar.DAY_OF_MONTH, numeroDias-1);
+    				
+    				Date dateFim = c.getTime();
+    				
+    				DAOInvestimento daoInv = new DAOInvestimento();
+    				DAODespesaVariavel daoDV = new DAODespesaVariavel();
+    				Usuario u = (Usuario) session.getAttribute("usuariologado");
+    				List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
+    				List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
+    				List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+    				Double somaInv = daoInv.somaByData(dateIni, dateFim, u.getIdUsuario());
+    				Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
+    				Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
+    				
+    				session.setAttribute("dinv", listaInv);
+    				session.setAttribute("ddf", listaDF);
+    				session.setAttribute("ddv", listaDV);
+    				session.setAttribute("somainv", somaInv);
+    				session.setAttribute("somadf", somaDF);
+    				session.setAttribute("somadv", somaDV);
+    	    		
+    	    		request.setAttribute("mensagem", "Investimento deletado com sucesso");
+    	    		
+    				} catch (Exception e) {
+    					e.printStackTrace();
+    				}finally{
+    					request.getRequestDispatcher("/logado/indexlogado.jsp").forward(request, response);
+    				}
+    	    		
+    	    	}
+    	//TODO
+    	    	else if(action.equalsIgnoreCase("editardf")){
+    	    		try{
+    	    			
+    	    		}catch(Exception e){
+    	    			e.printStackTrace();
+    	    			
+    	    		}finally{
+    	    			//Mudar para direcionar para o indexlogado
+    	    			request.getRequestDispatcher("/logado/editdf.jsp").forward(request, response);;
+    	    		}
+    	    		
+    	    	}
+    	    	//TODO
+    	    	else if(action.equalsIgnoreCase("atualizardf")){
+    	    			try{
+    	    			
+    	    		}catch(Exception e){
+    	    			e.printStackTrace();
+    	    			
+    	    		}finally{
+    	    			
+    	    		}
+    	    	}
+    	
     	}
     		
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request,response);

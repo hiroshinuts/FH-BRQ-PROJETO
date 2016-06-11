@@ -18,19 +18,27 @@
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/financial_health/js/snap.svg.js"></script>
-<script type="text/javascript" src="/financial_health/js/pizza.js"></script>
-<script type="text/javascript" src="/financial_health/js/a.js"></script>
-<script>
-   $(document).ready(
-		function(){
-			 $(window).load(function() {
-			      Pizza.init();
-			      $(document).foundation();
-			    });
-		}	   		
-   );
-  </script>
+<script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready( //quando a página carregar...
+function(){ //faça..
+//validar o formulário..
+$("#formulario").validate(
+{
+rules:{
+nome : "required"
+				},messages:{
+						nome:{
+							required : "Por favor, informe o nome.."
+							}
+				 }
+			}
+		);
+	}
+);
+</script>
 
 </head>
 <body class="container">
@@ -61,6 +69,10 @@
 			<a href="/financial_health/logado/analise.jsp" class="btn btn-default btn-block" >Busca/Periodo</a> 
 		</div>
 		
+		<div class="col-md-3 panel text-center">
+			<a href="/financial_health/logado/estimativa.jsp" class="btn btn-default btn-block" >Estimativa Futura</a> 
+		</div>
+		
 		
 		 <div class="col-md-3 panel text-center"> 
 	 		<a href="/financial_health/ControleUsuario?action=logout" class="btn btn-danger btn-block">
@@ -68,9 +80,7 @@
 	 		</a>
 	  	 </div> 
 	
-	<hr/>	
-	
-		
+	<!-- MODAL CADASTRO  INV -DF -DV -->		
 		<div id="janelainvestimento" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -83,13 +93,13 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formularioinvestimento" method="post" action="/financial_health/ControleInvestimento?action=cadastrar">
+					<form name="formulario" id="formulario" method="post" action="/financial_health/ControleInvestimento?action=cadastrar">
 						
 						<label>Nome do Investimento</label>
-						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
+						<input type="text" name="nome" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						<label>Valor:</label>
-						<input type="number" name="valor" class="form-control" placeholder="Digite aqui"/>
+						<input type="number" name="valor" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						
 						<label>Data do Investimento</label><br/>
@@ -118,13 +128,13 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formulariodespesafixa" method="post" action="/financial_health/ControleDespesaFixa?action=cadastrar">
+					<form name="formulario" id="formulario" method="post" action="/financial_health/ControleDespesaFixa?action=cadastrar">
 						
 						<label>Nome da Despesa</label>
-						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
+						<input type="text" name="nome" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						<label>Valor:</label>
-						<input type="number" name="valor" class="form-control" placeholder="Digite aqui"/>
+						<input type="number" name="valor" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						
 						<label>Data da Despesa</label><br/>
@@ -152,12 +162,12 @@
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formulariodespesavariavel" method="post" action="/financial_health/ControleDespesaVariavel?action=cadastrar">
+					<form name="formulario" method="post"  id="formulario" action="/financial_health/ControleDespesaVariavel?action=cadastrar">
 						<label>Nome da Despesa</label>
-						<input type="text" name="nome" class="form-control" placeholder="Digite aqui"/>
+						<input type="text" name="nome" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						<label>Valor:</label>
-						<input type="number" name="valor" class="form-control" placeholder="Digite aqui"/>
+						<input type="number" name="valor" class="form-control required" placeholder="Digite aqui"/>
 						<br/>
 						
 						<label>Data da Despesa</label><br/>
@@ -173,13 +183,16 @@
 			</div> 
 		</div>
 	</div>
+	<!-- FIM DO MODAL CADASTRO  INV -DF -DV -->	
+	
+	
 	
 	<!-- GRAFICO VALORES IDEAL -->
 	<div class="col-md-12">
 	<table class="columns">
       <tr>
-		<td><div class="col-md-4" id="graficoPorData" style="width: 600px; height: 250px;"></div></td>
-		<td><div class="col-md-4" id="graficoLancamento" style="width: 600px; height: 250px;"></div></td>
+		<td><div class="col-md-4" id="graficoPorData" style="width: 600px; height: 600px;"></div></td>
+		<td><div class="col-md-4" id="graficoLancamento" style="width: 600px; height: 600px;"></div></td>
 		</tr>
 	</table>
 	</div>
@@ -206,15 +219,14 @@
 					<td>${inv.valor }  </td>
 					<td>${inv.dataInvestimento }  </td>
 					<td>
-						<a href="/financial_health/ControleInvestimento?action=editar&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
+						<a href="/financial_health/ControleInvestimento?action=editarinv&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
-							
+						
 					
-					
-						<a href="/financial_health/ControleInvestimento?action=excluir&id=${inv.idInvestimento}" class="btn btn-danger btn-sm
+						<a href="/financial_health/ControleInvestimento?action=excluirinvindex&idinv=${inv.idInvestimento}" class="btn btn-danger btn-sm
 						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
+							<span class="glyphicon glyphicon-trash"></span>	 
 						 </a>
 					</td>
 				</tr>
@@ -247,19 +259,17 @@
 	
 	<c:forEach items="${sessionScope.ddf}" var="df">
 				<tr>
-					<td>${df.idDespesaFixa }   </td>
+					<td>${df.idDespesaFixa }</td>
 					<td>${df.nome }  </td>
 					<td>${df.valor }  </td>
 					<td>${df.dataDespesaFixa }  </td><td>
-						<a href="/financial_health/ControleDespesaFixa?action=editar&id=${df.idDespesaFixa}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
+						<a href="/financial_health/ControleDespesaFixa?action=editardf&id=${df.idDespesaFixa}"  class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 							
-					
-					
-						<a href="/financial_health/ControleDespesaFixa?action=excluir&id=${df.idDespesaFixa}" class="btn btn-danger btn-sm
+						<a href="/financial_health/ControleDespesaFixa?action=excluirdfindex&id=${df.idDespesaFixa}" class="btn btn-danger btn-sm
 						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
+							<span class="glyphicon glyphicon-trash"></span>	 
 						 </a>
 					</td>
 				</tr>
@@ -296,15 +306,15 @@
 					<td>${dv.valor }  </td>
 					<td>${dv.dataDespesaVariavel }  </td>
 					<td>
-						<a href="/financial_health/ControleDespesaVariavel?action=editar&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
-							<spam class="glyphicon glyphicon-pencil"></spam>
+						<a href="/financial_health/ControleDespesaVariavel?action=editardv&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 							
 					
 					
-						<a href="/financial_health/ControleDespesaVariavel?action=excluir&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Deseja excluir este item?');" >
-							<spam class="glyphicon glyphicon-trash"></spam>	 
+						<a href="/financial_health/ControleDespesaVariavel?action=excluirdvindex&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
+						 onclick="return confirm('Gostaria de excluir este item?');" >
+							<span class="glyphicon glyphicon-trash"></span>	 
 						 </a>
 					</td>
 				</tr>

@@ -60,6 +60,25 @@ public List<DespesaVariavel> findByNome(String nome) throws Exception{
 		return somatorio;
 	}
 	
+	@Override
+	public void delete(DespesaVariavel obj) throws Exception {
+		session = HibernateUtil.getSessionFactory().openSession();
+		transaction = session.beginTransaction();
+		session.delete(obj);
+		transaction.commit();
+		session.close();
+	
+	}
+	
+	@Override
+	public DespesaVariavel findById(Integer id) throws Exception {
+		session = HibernateUtil.getSessionFactory().openSession();
+		DespesaVariavel dv = (DespesaVariavel) session.get(DespesaVariavel.class, id);
+		return dv;
+	}
+	
+	
+	
 public static void main(String[] args) {
 		
 		DAODespesaVariavel dao = new DAODespesaVariavel();

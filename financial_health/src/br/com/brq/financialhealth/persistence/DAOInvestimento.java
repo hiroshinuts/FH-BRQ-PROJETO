@@ -58,6 +58,25 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		return somatorio;
 	}
 
+	@Override
+	public void delete(Investimento obj) throws Exception {
+		session = HibernateUtil.getSessionFactory().openSession();
+		
+		transaction = session.beginTransaction();
+		session.delete(obj);
+		transaction.commit();
+		session.close();
+		
+		
+	}
 	
+	@Override
+	public Investimento findById(Integer id) throws Exception {
+		
+		session = HibernateUtil.getSessionFactory().openSession();
+		Investimento inv = (Investimento) session.get(Investimento.class, id);
+		session.close();
+		return inv;
+	}
 	
 }
