@@ -60,7 +60,7 @@ public class ControleBuscaPorData extends HttpServlet {
     			
     			session.setAttribute("somainva", somaInv);
     			session.setAttribute("somadfa", somaDF);
-    			session.setAttribute("somadav", somaDV);
+    			session.setAttribute("somadva", somaDV);
     			session.setAttribute("dadosinv", listaInv);
     			session.setAttribute("dadosdf", listaDF);
     			session.setAttribute("dadosdv", listaDV);

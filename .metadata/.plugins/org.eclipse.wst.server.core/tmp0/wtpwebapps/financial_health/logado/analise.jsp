@@ -14,9 +14,23 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
+
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/snap.svg.js"></script>
+<script type="text/javascript" src="/financial_health/js/pizza.js"></script>
+<script>
+   $(document).ready(
+		function(){
+			 $(window).load(function() {
+			      Pizza.init();
+			      $(document).foundation();
+			    });
+		}	   		
+   );
+  </script>
 
 </head>
 <body class="container">
@@ -31,7 +45,26 @@
 		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
 	<hr/>
 	
-		MOSTRAR GRAFICOS - LISTA - 
+		<!-- GRAFICO -->
+		
+			<div class="container">
+	<div class="row">
+	</div>
+    <div class="row">
+        <div class="col-md-4">
+    	<h2>Lançamento por Periodo</h2>
+          <ul data-pie-id="svg">
+           	 <li data-value='<fmt:formatNumber value="${somainva}" maxFractionDigits="2"/>'>Investimento(${somainva})</li>
+           	<li data-value='<fmt:formatNumber value="${somadfa}" maxFractionDigits="2"/>'>Despesa Fixa(${somadfa})</li>
+            <li data-value='<fmt:formatNumber value="${somadva}" maxFractionDigits="2"/>'>Despesa Variavel(${somadva})</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <div id="svg"></div>
+        </div>
+     </div>
+		
+		<!-- FIM GRAFICO -->
 		
 		<form name="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
 		<label>Data Inicio</label>
@@ -177,7 +210,7 @@
 						<a href="/financial_health/ControleDespesaVariavel?action=excluir&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
 						 onclick="return confirm('Deseja excluir este item?');" >
 							<spam class="glyphicon glyphicon-trash"></spam>	 
-0						 </a>
+*						 </a>
 					</td>
 				</tr>
 	</c:forEach>

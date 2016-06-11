@@ -124,6 +124,9 @@ public class ControleUsuario extends HttpServlet {
         			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
         			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
         			
+        			if (listaInv != null && listaDF != null && listaDV != null){
+        				
+        			
         			session.setAttribute("dinv", listaInv);
         			session.setAttribute("ddf", listaDF);
         			session.setAttribute("ddv", listaDV);
@@ -131,8 +134,9 @@ public class ControleUsuario extends HttpServlet {
         			session.setAttribute("somadf", somaDF);
         			session.setAttribute("somadv", somaDV);
     				
+        			}//fimIF DOS DADOS NULL
         			
-        			//METODO PARA GRAFICO IDEAL // 4 informacoes 
+        			//METODO PARA GRAFICO IDEAL // 3 informacoes 
         			
         			Idade idd = new Idade(c.getTime());
         			Integer idade = idd.calcIdade(u.getDataNascimento());
@@ -145,9 +149,9 @@ public class ControleUsuario extends HttpServlet {
         				
         				Double valor = (Double) valores[i];
         				listaValores.add(valor);
-        			}
 
         			session.setAttribute("valoresGraficoIdeal", listaValores);
+        			}
         			
         			// FIM INFORMACOES GRAFICO
         			

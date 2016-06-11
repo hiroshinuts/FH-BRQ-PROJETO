@@ -13,9 +13,24 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
+
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/snap.svg.js"></script>
+<script type="text/javascript" src="/financial_health/js/pizza.js"></script>
+<script type="text/javascript" src="/financial_health/js/a.js"></script>
+<script>
+   $(document).ready(
+		function(){
+			 $(window).load(function() {
+			      Pizza.init();
+			      $(document).foundation();
+			    });
+		}	   		
+   );
+  </script>
 
 </head>
 <body class="container">
@@ -160,8 +175,36 @@
 	</div>
 	
 	<!-- GRAFICO VALORES IDEAL -->
-	
-	
+	<div class="container">
+	<div class="row">
+	</div>
+    <div class="row">
+        <div class="col-md-3">
+    	<h2>Grafico Ideal</h2>
+          <ul data-pie-id="svg">
+            <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[0]}" maxFractionDigits="0"/>'>Investimento (<fmt:formatNumber value="${valoresGraficoIdeal[0]}" maxFractionDigits="0"/>) </li>
+              <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[1]}" maxFractionDigits="0"/>'>Despesa Fixa (<fmt:formatNumber value="${valoresGraficoIdeal[1]}" maxFractionDigits="0"/>) </li>
+              <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[2]}" maxFractionDigits="0"/>'>Despesa Variavel (<fmt:formatNumber value="${valoresGraficoIdeal[2]}" maxFractionDigits="0"/>)</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div id="svg"></div>
+        </div>
+        <div class="col-md-3">
+        <h2>Lançamento Mensal</h2>
+          <ul data-pie-id="my-cool-chart">
+            <li data-value='<fmt:formatNumber value="${somainv}" maxFractionDigits="0"/>'>Investimento(${somainv})</li>
+           	<li data-value='<fmt:formatNumber value="${somadf}" maxFractionDigits="0"/>'>Despesa Fixa(${somadf})</li>
+            <li data-value='<fmt:formatNumber value="${somadv}" maxFractionDigits="0"/>'>Despesa Variavel(${somadv})</li>
+           </ul>
+            
+        </div>
+        <div class="col-md-3">
+            <div id="my-cool-chart"></div>
+        </div>
+    </div>
+</div>
+
 
 <!-- FIM GRAFICO IDEAL -->
 	
