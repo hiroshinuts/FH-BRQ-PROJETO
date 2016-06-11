@@ -14,23 +14,11 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
 
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/financial_health/js/snap.svg.js"></script>
-<script type="text/javascript" src="/financial_health/js/pizza.js"></script>
-<script>
-   $(document).ready(
-		function(){
-			 $(window).load(function() {
-			      Pizza.init();
-			      $(document).foundation();
-			    });
-		}	   		
-   );
-  </script>
+
 
 </head>
 <body class="container">
@@ -47,22 +35,7 @@
 	
 		<!-- GRAFICO -->
 		
-			<div class="container">
-	<div class="row">
-	</div>
-    <div class="row">
-        <div class="col-md-4">
-    	<h2>Lançamento por Periodo</h2>
-          <ul data-pie-id="svg">
-           	 <li data-value='<fmt:formatNumber value="${somainva}" maxFractionDigits="2"/>'>Investimento(${somainva})</li>
-           	<li data-value='<fmt:formatNumber value="${somadfa}" maxFractionDigits="2"/>'>Despesa Fixa(${somadfa})</li>
-            <li data-value='<fmt:formatNumber value="${somadva}" maxFractionDigits="2"/>'>Despesa Variavel(${somadva})</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <div id="svg"></div>
-        </div>
-     </div>
+		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
 		
 		<!-- FIM GRAFICO -->
 		
@@ -226,5 +199,28 @@
 			</tr>
 		</tfoot>
 	</table>
+	
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+	      google.charts.load("current", {packages:["corechart"]});
+	      google.charts.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Task', 'Hours per Day'],
+	          ['Investimento(${somainva})',  ${somainva}],
+	          ['DespesaFixa(${somadfa})',      ${somadfa}],
+	          ['DespesaVariavel(${somadva})',  ${somadva}],
+	        ]);
+	
+	        var options = {
+	          title: 'Grafico por Data',
+	          is3D: true,
+	          colors: ['#41DE11', '#DEDE11', '#FD0404']
+	        };
+	
+	        var chart = new google.visualization.PieChart(document.getElementById('graficoPorData'));
+	        chart.draw(data, options);
+	      }
+   	 </script>
 </body>
 </html>

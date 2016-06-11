@@ -175,35 +175,15 @@
 	</div>
 	
 	<!-- GRAFICO VALORES IDEAL -->
-	<div class="container">
-	<div class="row">
+	<div class="col-md-12">
+	<table class="columns">
+      <tr>
+		<td><div class="col-md-4" id="graficoPorData" style="width: 600px; height: 250px;"></div></td>
+		<td><div class="col-md-4" id="graficoLancamento" style="width: 600px; height: 250px;"></div></td>
+		</tr>
+	</table>
 	</div>
-    <div class="row">
-        <div class="col-md-3">
-    	<h2>Grafico Ideal</h2>
-          <ul data-pie-id="svg">
-            <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[0]}" maxFractionDigits="0"/>'>Investimento (<fmt:formatNumber value="${valoresGraficoIdeal[0]}" maxFractionDigits="0"/>) </li>
-              <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[1]}" maxFractionDigits="0"/>'>Despesa Fixa (<fmt:formatNumber value="${valoresGraficoIdeal[1]}" maxFractionDigits="0"/>) </li>
-              <li data-value='<fmt:formatNumber value="${valoresGraficoIdeal[2]}" maxFractionDigits="0"/>'>Despesa Variavel (<fmt:formatNumber value="${valoresGraficoIdeal[2]}" maxFractionDigits="0"/>)</li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <div id="svg"></div>
-        </div>
-        <div class="col-md-3">
-        <h2>Lançamento Mensal</h2>
-          <ul data-pie-id="my-cool-chart">
-            <li data-value='<fmt:formatNumber value="${somainv}" maxFractionDigits="0"/>'>Investimento(${somainv})</li>
-           	<li data-value='<fmt:formatNumber value="${somadf}" maxFractionDigits="0"/>'>Despesa Fixa(${somadf})</li>
-            <li data-value='<fmt:formatNumber value="${somadv}" maxFractionDigits="0"/>'>Despesa Variavel(${somadv})</li>
-           </ul>
-            
-        </div>
-        <div class="col-md-3">
-            <div id="my-cool-chart"></div>
-        </div>
-    </div>
-</div>
+		
 
 
 <!-- FIM GRAFICO IDEAL -->
@@ -342,5 +322,53 @@
 			</tr>
 		</tfoot>
 	</table>
+	
+	<!-- Grafico Valor Ideal -->
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+	      google.charts.load("current", {packages:["corechart"]});
+	      google.charts.setOnLoadCallback(drawVidealChart);
+	      google.charts.setOnLoadCallback(drawLancamentoChart);
+	      function drawVidealChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Task', 'Hours per Day'],
+	          ['Investimento(${valoresGraficoIdeal[0]})',  ${valoresGraficoIdeal[0]}],
+	          ['Despesa Fixa(${valoresGraficoIdeal[1]})',      ${valoresGraficoIdeal[1]}],
+	          ['Despesa Variavel(${valoresGraficoIdeal[2]}})',  ${valoresGraficoIdeal[2]}],
+	        ]);
+	        
+	
+	        var options = {
+	          title: 'Grafico Valor Ideal',
+	          is3D: true,
+	          colors: ['#41DE11', '#DEDE11', '#FD0404']
+	        };
+	
+	        var chart = new google.visualization.PieChart(document.getElementById('graficoPorData'));
+	        chart.draw(data, options);
+	      }
+	      
+	      function drawLancamentoChart() {
+
+	          var data = google.visualization.arrayToDataTable([
+	          ['Task', 'Hours per Day'],
+	          ['Investimento(${somainv})',  ${somainv}],
+	          ['Despesa Fixa(${somadf})',      ${somadf}],
+	          ['Despesa Variavel(${somadv})',  ${somadv}],
+	          ]);
+
+	           var options = {
+	          	title: 'Grafico Lancamento do Mes',
+	         	 is3D: true,
+	         	colors: ['#41DE11', '#DEDE11', '#FD0404']
+	           };
+
+	          var chart = new google.visualization.PieChart(document.getElementById('graficoLancamento'));
+	          chart.draw(data, options);
+	      }
+   	 </script>
+   	 
+   	 
+	
 </body>
 </html>

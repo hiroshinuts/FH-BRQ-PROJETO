@@ -2115,3 +2115,8 @@
 0:0:0:0:0:0:0:1 - - [10/Jun/2016:22:56:08 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 835
 0:0:0:0:0:0:0:1 - - [10/Jun/2016:22:56:08 -0300] "GET /teste_grafico/js/google.js HTTP/1.1" 304 -
 0:0:0:0:0:0:0:1 - - [10/Jun/2016:22:59:21 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 870
+0:0:0:0:0:0:0:1 - - [10/Jun/2016:23:09:30 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 873
+0:0:0:0:0:0:0:1 - - [10/Jun/2016:23:09:49 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 877
+0:0:0:0:0:0:0:1 - - [10/Jun/2016:23:10:12 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 881
+0:0:0:0:0:0:0:1 - - [10/Jun/2016:23:10:13 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 881
+0:0:0:0:0:0:0:1 - - [10/Jun/2016:23:10:36 -0300] "GET /teste_grafico/index2.jsp HTTP/1.1" 200 888
