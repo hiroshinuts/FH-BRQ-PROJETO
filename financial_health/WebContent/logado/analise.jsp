@@ -47,13 +47,13 @@ nome : "required"
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
-	Id do Usuario: <label> ${usuariologado.idUsuario} </label> <br/>
-  	Usuario Autenticado: <label> ${usuariologado.nome} </label> <br/>
+	<label>Id </label> ${usuariologado.idUsuario}
+  	<label>Usuario: </label> ${usuariologado.nome} <br/>
 	<h3>Lançamentos por data</h3>
 		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
 	<hr/>
 	
-		
+		<div class="col-md-3">
 		<form name="formulario" id="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
 		<label>Data Inicio</label>
 		<input type="date" class="form-control required"  name="dateini" id="dateini"/>
@@ -65,6 +65,7 @@ nome : "required"
 			<p>
 				${mensagem}
 			</p>
+		</div>
 			
 		<!-- GRAFICO -->
 		

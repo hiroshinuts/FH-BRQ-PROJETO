@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Controle</title>
 
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
@@ -46,8 +46,8 @@ nome : "required"
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
-		Id do Usuario: <label> ${usuariologado.idUsuario} </label> <br/>
-  		Usuario Autenticado: <label> ${usuariologado.nome} </label> <br/>
+		<label>Id </label> ${usuariologado.idUsuario}
+  		<label>Usuario: </label> ${usuariologado.nome} <br/>
 	
 		<h4>${mensagem}</h4>
 		<div class="col-md-3 panel text-center">

@@ -35,6 +35,7 @@
                         <h4>Gestor de Projetos: Rodrigo Frizzi</h4>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
+                            
                             <li>
 								<a href="cadastro.jsp" class="btn btn-default btn-block">Cadastro</a>
                             </li>
