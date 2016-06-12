@@ -13,10 +13,12 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/login.css"/>
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/login.js"></script>
 
 <script type="text/javascript">
 
@@ -38,37 +40,32 @@ nome : "required"
 );
 </script>
 
-
 </head>
 <body class="container">
-
-<jsp:include page="/template/topo.jsp"></jsp:include>
-
-	 <div class="well well-sm">
-		<h2> Área de Acesso Restrito</h2>
-	 </div>
-	 
-	 <div> 
-	 	<a href="index.jsp">Voltar</a> para a página inicial.
-	 	<br/>
-	 	<br/>
-	 	<br/>	 
-	   </div> 
-
-	<form name = "formulario" id="formulario" method="post" action="/financial_health/ControleUsuario?action=login">
-		<div class="col-md-12" >
-		
-			<div class="col-md-5">
-				<input type="text" name="cpf" class="form-control required"  placeholder="CPF"><br/>
-				<input type="password" name="senha" class="form-control required" placeholder="Senha">
-				${mensagem}
-				
-				<br/><br/>
-				<input type="submit" value="Autenticar Usuario"
-					   class="btn btn-success btn-block"/>
-			</div>
-		</div>
-	</form>
+	
+	<!--  SNIPPER -->
+	
+	<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+           
+            <div class="wrap">
+                <p class="form-title">${mensagem}</p>
+                <p class="form-title">
+                    Entrar </p>
+				<form name = "formulario" class="login" id="formulario" method="post" action="/financial_health/ControleUsuario?action=login">
+				<input type="text" name="cpf" placeholder="Digite o seu cpf"><br/>
+				<input type="password" name="senha"  placeholder="Senha">
+				<input type="submit" value="Login" class="btn btn-success btn-sm"/>
+               	<a href="index.jsp" class="btn btn-danger btn-block">Voltar
+	 			</a>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+	
 
 </body>
 </html>

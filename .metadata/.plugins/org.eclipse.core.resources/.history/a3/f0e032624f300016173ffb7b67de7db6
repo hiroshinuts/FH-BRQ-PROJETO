@@ -1,0 +1,147 @@
+package br.com.brq.financialhealth.services;
+
+public class Estimativa {
+	
+
+	public Double lancaFuturo(Integer idade, Double valor18_29, Double valor30_39, Double valor40_49, Double valor50_65){
+		
+		Double totalInvestimento = 0.0;
+		
+		if(idade <= 29){
+			//calculo para até 29
+			int multiplicaIdade = 30 - idade;
+			CalculoPorIdade c29 = new CalculoPorIdade();
+			double parcela = c29.saberInvestimento(idade, valor18_29);
+			double montante = parcela * 1.005;
+			
+			//1 ano depositando e pegando juros
+			for(int i=0; i <= 12 ; i++){
+			   montante = (montante * 1.005 )  + parcela;
+			}
+			// multiplica pelos anos aguardados
+			double total29 = montante * multiplicaIdade;//total
+			
+			//////////////////////////////////////////////////////////////////////////////
+			
+			//calculo para até 39
+			int multiplicaIdade1 = 9;
+			CalculoPorIdade c39 = new CalculoPorIdade();
+			double parcela1 = c39.saberInvestimento(31, valor30_39);
+			double montante1 = parcela1* 1.005;
+			
+			for(int i=0; i <= 12 ; i++){
+				   montante1 = (montante1 * 1.005 )  + parcela1;
+				}
+			//multiplica pelos anos
+			double total39 = montante1 * multiplicaIdade1;
+			
+			////////////////////////////////////////////////////////////////////////////////
+			
+			//calculo para até 49
+			int multiplicaIdade2 = 10;
+			CalculoPorIdade c49 = new CalculoPorIdade();
+			double parcela2 = c49.saberInvestimento(41, valor40_49);
+			double montante2 = parcela2* 1.005;
+			
+			for(int i=0; i <= 12 ; i++){
+				   montante2 = (montante2 * 1.005 )  + parcela2;
+				}
+			//multiplica pelos anos
+			
+			double total49 = montante2 * multiplicaIdade2;//
+			
+			////////////////////////////////////////////////////////////////////////////////
+			
+			//calculo até 65 aposentadoria
+			int multiplicaIdade3 = 16;
+			CalculoPorIdade c65 = new CalculoPorIdade();
+			double parcela3 = c65.saberInvestimento(51, valor50_65);
+			double montante3 = parcela3*1.005;
+			
+			for(int i=0; i <= 12 ; i++){
+				   montante3 = (montante3 * 1.005 )  + parcela3;
+				}
+			//multiplica pelos anos
+			
+			double total65 = montante3 * multiplicaIdade3;
+			
+			totalInvestimento = total29 + total39 + total49 + total65;
+			
+			/////////////////////////////////////////////////////////////////////////////
+			
+		}else if(idade >= 30 && idade <= 39){	
+			
+			//30 a 39
+			int multiplicaIdade = 39 - idade;
+			CalculoPorIdade c39 = new CalculoPorIdade();
+			double parcela = c39.saberInvestimento(idade, valor30_39);
+			double montante1 = parcela*1.005;
+			
+			for(int i=0; i <= 12 ; i++){
+				   montante1 = (montante1 * 1.005 )  + parcela;
+				}
+			
+			
+			double total39 = montante1 * multiplicaIdade;//total
+			
+			//calculo para até 49
+			int multiplicaIdade2 = 10;
+			CalculoPorIdade c49 = new CalculoPorIdade();
+			double parcela2 = c49.saberInvestimento(41, valor40_49);
+			double montante2 = parcela2*1.005;
+			double total49 = montante2 * multiplicaIdade2;//
+			
+			//calculo até 65 aposentadoria
+			int multiplicaIdade3 = 16;
+			CalculoPorIdade c65 = new CalculoPorIdade();
+			double parcela3 = c65.saberInvestimento(51, valor50_65);
+			double montante3 = parcela3*1.005;
+			double total65 = montante3 * multiplicaIdade3;
+			
+			totalInvestimento = total39 + total49 + total65;
+
+		}else if(idade >= 40 && idade <= 49){
+			
+			//calculo 40 a 49
+			int multiplicaIdade = 49 - idade;
+			CalculoPorIdade c49 = new CalculoPorIdade();
+			double parcela = c49.saberInvestimento(idade, valor30_39);
+			double montante = parcela*1.005;
+			double total49 = montante * multiplicaIdade;//total
+			
+			//calculo até 65 aposentadoria
+			int multiplicaIdade3 = 16;
+			CalculoPorIdade c65 = new CalculoPorIdade();
+			double parcela3 = c65.saberInvestimento(51, valor50_65);
+			double montante3 = parcela3*1.005;
+			double total65 = montante3 * multiplicaIdade3;
+			
+			totalInvestimento = total49 + total65;
+			
+			
+		}else if(idade >= 50 && idade <=65){
+			
+			//idade 50 a aposentadoria
+			int multiplicaIdade = 65 - idade;
+			CalculoPorIdade c65 = new CalculoPorIdade();
+			double parcela = c65.saberInvestimento(idade, valor30_39);
+			double montante = parcela*1.005;
+			double total65 = montante * multiplicaIdade;//total
+			
+			totalInvestimento = total65;
+		}
+		
+		return totalInvestimento;
+	}
+	
+	public static void main(String[] args) {
+		
+		Estimativa e = new Estimativa();
+		Double aui = (Double) e.lancaFuturo(18, 1000.0, 2000.0, 3000.0, 4000.0);
+		
+		System.out.println(aui);
+		
+		
+	}
+	
+}
