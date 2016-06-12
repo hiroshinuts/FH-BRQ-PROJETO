@@ -1,7 +1,5 @@
 package br.com.brq.financialhealth.persistence;
 
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
@@ -29,7 +27,6 @@ public class DAOUsuario extends DAOGeneric<Usuario, Integer> {
 	}
 	@Override
 	public void delete(Usuario u) throws Exception {
-		// TODO Auto-generated method stub
 		super.delete(u);
 	}
 

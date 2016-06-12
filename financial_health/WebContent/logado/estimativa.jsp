@@ -25,10 +25,15 @@
 	
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
+	
+	<label>Id </label> ${usuariologado.idUsuario}
+  	<label>Usuario: </label> ${usuariologado.nome} <br/>
+		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
+	<hr/>
 
 	<div class="col-md-4">
 	
-			<form id="formulario" name="formulario" method="post" action="/financial_health/ControleEstimativa?action=cadastrarUsuario">
+			<form id="formulario" name="formulario" method="post" action="/financial_health/ControleEstimativa?action=calcular">
 			
 				<label>Idade:</label><br/>
 				<input type="number" id="idade" name="idade" class="form-control required" placeholder="Digite aqui"/>
@@ -43,11 +48,11 @@
 				<br/>
 				
 				<label>Valor que imagina ganhar dos 40 aos 49 por mes:</label><br/>
-				<input type="number" id="valor140_49" name="valor140_49" class="form-control required" placeholder="Digite aqui"/>
+				<input type="number" id="valor40_49" name="valor40_49" class="form-control required" placeholder="Digite aqui"/>
 				<br/>
 				
 				<label>Valor que imagina ganhar dos 50 aos 65 por mes:</label><br/>
-				<input type="number" id="valor150_65" name="valor150_65" class="form-control required" placeholder="Digite aqui"/>
+				<input type="number" id="valor50_65" name="valor50_65" class="form-control required" placeholder="Digite aqui"/>
 				<br/>
 				
 				
@@ -61,9 +66,9 @@
 			<h3><label>Alcançando o indicado que se deve "Investir" por mês, que o sistema coloca como "Gráfico Ideal"</label></h3>
 			<h3><label>Para o calculo da estimativa, foi utilizado o valor fixo da poupança de: 0,5%</label></h3>
 			<h3><label>Diversificar os investimentos fazem com que além de mais segurança um melhor rendimento.</label></h3>
-			<h3><label>Conforme os dados passados, seu Rendimento é de :</label></h3><br/><br/>
+			<h3><label>Conforme os dados passados, seu Rendimento é de :</label></h3><br/>
 			
-			<h1><label>AAAAAAAA</label></h1>
+			<h1><label><fmt:formatNumber value="${mensagem}" maxFractionDigits="2" type="currency"/></label></h1>
 			
 		
 		

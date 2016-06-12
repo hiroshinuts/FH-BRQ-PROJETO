@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.brq.financialhealth.services.Estimativa;
+
 @WebServlet("/ControleEstimativa")
 public class ControleEstimativa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -15,10 +17,46 @@ public class ControleEstimativa extends HttpServlet {
         super();
     }
 
+    protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+    	String action = request.getParameter("action");
+    	Integer idade;
+    	Double valor1;
+    	Double valor2;
+    	Double valor3;
+    	Double valor4;
+    	Double resultado;
+    	
+    	if("calcular".equalsIgnoreCase(action)){
+    		
+    		try{
+    		Estimativa est = new Estimativa();
+    				
+    		idade = Integer.parseInt(request.getParameter("idade"));
+    		valor1 = Double.parseDouble(request.getParameter("valor18_29"));
+    		valor2 = Double.parseDouble(request.getParameter("valor30_39"));
+    		valor3 = Double.parseDouble(request.getParameter("valor40_49"));
+    		valor4 = Double.parseDouble(request.getParameter("valor50_65"));	
+
+    		resultado = est.lancaFuturo(idade, valor1, valor2, valor3, valor4);
+    		
+    		request.setAttribute("mensagem", resultado);
+			request.getRequestDispatcher("/logado/estimativa.jsp").forward(request, response);
+    		
+    		}catch(Exception e){
+    			e.printStackTrace();
+    		}
+    		
+    	}
+    	
+    }
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
 	}
 
 }

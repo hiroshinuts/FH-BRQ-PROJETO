@@ -55,7 +55,6 @@ public class DespesaFixa {
 	private Usuario usuario;
 	
 	public DespesaFixa() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public DespesaFixa(Integer idDespesaFixa, String nome, Double valor, Date dataDespesaFixa) {

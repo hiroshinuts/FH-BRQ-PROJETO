@@ -183,26 +183,6 @@ public class ControleUsuario extends HttpServlet {
 			
 		}
     	
-    	else if ("consultapordata".equalsIgnoreCase(action)){
-    		
-    		try{
-    			
-    			Usuario u = new Usuario();
-    			DAOInvestimento dInv = new DAOInvestimento();
-    			DAODespesaFixa dDf = new DAODespesaFixa();
-    			DAODespesaVariavel dDv = new DAODespesaVariavel();
-    			HttpSession session = request.getSession();
-    			session.setAttribute("usuariologado", u);
-    			
-    			
-    			
-    			
-    			
-    		}catch(Exception e){
-    			e.printStackTrace();
-    		}
-    			
-    	}
     	
     }
 

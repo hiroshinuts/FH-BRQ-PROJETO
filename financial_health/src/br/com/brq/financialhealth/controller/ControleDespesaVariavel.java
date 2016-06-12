@@ -19,7 +19,6 @@ import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.DAODespesaFixa;
 import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
-import br.com.brq.financialhealth.persistence.DAOUsuario;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
 @WebServlet("/ControleDespesaVariavel")
@@ -38,7 +37,6 @@ public class ControleDespesaVariavel extends HttpServlet {
     		dv.setValor(Double.parseDouble(request.getParameter("valor")));
     		dv.setDataDespesaVariavel(FormatacaoData.convertToDate(request.getParameter("datadespesavariavel")));
     		
-    		DAOUsuario daoUsuario = new DAOUsuario();
 
     		HttpSession session = request.getSession();
 			Usuario u = (Usuario) session.getAttribute("usuariologado");

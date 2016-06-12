@@ -56,7 +56,6 @@ public class Investimento {
 	private Usuario usuario;
 	
 	public Investimento() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Investimento(Integer idInvestimento, String nome, Double valor, Date dataInvestimento) {

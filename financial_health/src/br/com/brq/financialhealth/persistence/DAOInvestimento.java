@@ -3,7 +3,6 @@ package br.com.brq.financialhealth.persistence;
 import java.util.Date;
 import java.util.List;
 
-import br.com.brq.financialhealth.entities.DespesaVariavel;
 import br.com.brq.financialhealth.entities.Investimento;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;

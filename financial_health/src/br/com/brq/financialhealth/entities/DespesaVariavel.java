@@ -56,7 +56,6 @@ public class DespesaVariavel {
 	private Usuario usuario;
 	
 	public DespesaVariavel() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public DespesaVariavel(Integer idDespesaVariavel, String nome, Double valor, Date dataDespesaVariavel) {

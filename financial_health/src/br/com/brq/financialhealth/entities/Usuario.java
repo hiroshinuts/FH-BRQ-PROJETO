@@ -61,7 +61,6 @@ public class Usuario {
 	private List<DespesaVariavel> despesaVariavel;
 
 	public Usuario() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(Integer idUsuario, String nome, String email, String cpf, Date dataNascimento,

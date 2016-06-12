@@ -68,7 +68,6 @@ public class CalculoPorIdade {
 	public Double saberInvestimento(int idade, Double salario){
 		
 		GuardaValores gv = new GuardaValores();
-		Double investimento;
 		
 			if(idade >65){
 			

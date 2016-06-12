@@ -19,7 +19,6 @@ import br.com.brq.financialhealth.entities.Usuario;
 import br.com.brq.financialhealth.persistence.DAODespesaFixa;
 import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
-import br.com.brq.financialhealth.persistence.DAOUsuario;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
 @WebServlet("/ControleInvestimento")
@@ -28,8 +27,8 @@ public class ControleInvestimento extends HttpServlet {
        
     public ControleInvestimento() {
         super();
-        // TODO Auto-generated constructor stub
     }
+    
     protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	String action = request.getParameter("action");
@@ -43,7 +42,6 @@ public class ControleInvestimento extends HttpServlet {
     			inv.setValor(Double.parseDouble(request.getParameter("valor")));
     			inv.setDataInvestimento(FormatacaoData.convertToDate(request.getParameter("datainvestimento")));
 
-    			DAOUsuario daoUsuario = new DAOUsuario();
     			
     			HttpSession session = request.getSession();
     			Usuario u = (Usuario) session.getAttribute("usuariologado");

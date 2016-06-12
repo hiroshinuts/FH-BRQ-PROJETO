@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import br.com.brq.financialhealth.entities.DespesaFixa;
 import br.com.brq.financialhealth.entities.DespesaVariavel;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;
