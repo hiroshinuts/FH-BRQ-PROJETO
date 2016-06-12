@@ -18,8 +18,8 @@
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/financial_health/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
+
 <script type="text/javascript">
 
 $(document).ready( //quando a página carregar...

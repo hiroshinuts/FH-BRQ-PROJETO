@@ -298,6 +298,7 @@ nome : "required"
 		<div class="col-md-12">
 		<div class="panel panel-default">
 		<div class="panel-heading">Despesa Variavel</div>
+			<label>Despesa Variavel</label>
 			<table class="table">
 				<thead>
 					<tr>

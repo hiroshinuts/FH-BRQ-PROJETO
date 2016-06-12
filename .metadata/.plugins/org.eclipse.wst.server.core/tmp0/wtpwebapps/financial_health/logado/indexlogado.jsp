@@ -18,8 +18,8 @@
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
-
 <script type="text/javascript">
 
 $(document).ready( //quando a página carregar...
@@ -200,52 +200,57 @@ nome : "required"
 
 
 <!-- FIM GRAFICO IDEAL -->
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Investimento</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Valor</th>
+						<th>Data</th>
+					</tr>
+				</thead>
+				<tbody>
+			<c:forEach items="${sessionScope.dinv}" var="inv">
+						<tr>
+							<td>${inv.idInvestimento }   </td>
+							<td>${inv.nome }  </td>
+							<td>${inv.valor }  </td>
+							<td>${inv.dataInvestimento }  </td>
+							<td>
+								<a href="/financial_health/ControleInvestimento?action=editarinv&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+								
+							
+								<a href="/financial_health/ControleInvestimento?action=excluirinvindex&idinv=${inv.idInvestimento}" class="btn btn-danger btn-sm
+								 onclick="return confirm('Deseja excluir este item?');" >
+									<span class="glyphicon glyphicon-trash"></span>	 
+								 </a>
+							</td>
+						</tr>
+			</c:forEach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th></th>
+						<th>Total:</th>
+						<th>
+						<fmt:formatNumber value="${sessionScope.somainv}" type="currency">
+		  				</fmt:formatNumber>
+		  				</th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+			</div>
 	
-	<label>Investimento</label>		
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Código</th>
-				<th>Nome</th>
-				<th>Valor</th>
-				<th>Data</th>
-			</tr>
-		</thead>
-		<tbody>
-	<c:forEach items="${sessionScope.dinv}" var="inv">
-				<tr>
-					<td>${inv.idInvestimento }   </td>
-					<td>${inv.nome }  </td>
-					<td>${inv.valor }  </td>
-					<td>${inv.dataInvestimento }  </td>
-					<td>
-						<a href="/financial_health/ControleInvestimento?action=editarinv&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-pencil"></span>
-						</a>
-						
-					
-						<a href="/financial_health/ControleInvestimento?action=excluirinvindex&idinv=${inv.idInvestimento}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Deseja excluir este item?');" >
-							<span class="glyphicon glyphicon-trash"></span>	 
-						 </a>
-					</td>
-				</tr>
-	</c:forEach>
-		</tbody>
-		<tfoot>
-			<tr>
-				<th></th>
-				<th>Total:</th>
-				<th>
-				<fmt:formatNumber value="${sessionScope.somainv}" type="currency">
-  				</fmt:formatNumber>
-  				</th>
-				<th></th>
-			</tr>
-		</tfoot>
-	</table>
-	
-	<label>Despesa Fixa</label>
+	<div class="col-md-12">
+	<div class="panel panel-default">
+	<div class="panel-heading">Despesa Fixa</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -287,51 +292,58 @@ nome : "required"
 			</tr>
 		</tfoot>
 	</table>
+	</div>
+	</div>
 	
-	<label>Despesa Variavel</label>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Código</th>
-				<th>Nome</th>
-				<th>Valor</th>
-				<th>Data</th>
-			</tr>
-		</thead>
-		<tbody>
-	<c:forEach items="${sessionScope.ddv}" var="dv">
-				<tr>
-					<td>${dv.idDespesaVariavel }   </td>
-					<td>${dv.nome }  </td>
-					<td>${dv.valor }  </td>
-					<td>${dv.dataDespesaVariavel }  </td>
-					<td>
-						<a href="/financial_health/ControleDespesaVariavel?action=editardv&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-pencil"></span>
-						</a>
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Despesa Variavel</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Nome</th>
+						<th>Valor</th>
+						<th>Data</th>
+					</tr>
+				</thead>
+				<tbody>
+			<c:forEach items="${sessionScope.ddv}" var="dv">
+						<tr>
+							<td>${dv.idDespesaVariavel }   </td>
+							<td>${dv.nome }  </td>
+							<td>${dv.valor }  </td>
+							<td>${dv.dataDespesaVariavel }  </td>
+							<td>
+								<a href="/financial_health/ControleDespesaVariavel?action=editardv&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-pencil"></span>
+								</a>
+									
 							
-					
-					
-						<a href="/financial_health/ControleDespesaVariavel?action=excluirdvindex&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
-						 onclick="return confirm('Gostaria de excluir este item?');" >
-							<span class="glyphicon glyphicon-trash"></span>	 
-						 </a>
-					</td>
-				</tr>
-	</c:forEach>
-		</tbody>
-		<tfoot>
-			<tr>
-				<th></th>
-				<th>Total:</th>
-				<th>
-				 <fmt:formatNumber value="${sessionScope.somadv}" type="currency">
-  				 </fmt:formatNumber>
-  				 </th>
-				<th></th>
-			</tr>
-		</tfoot>
-	</table>
+							
+								<a href="/financial_health/ControleDespesaVariavel?action=excluirdvindex&id=${dv.idDespesaVariavel}" class="btn btn-danger btn-sm
+								 onclick="return confirm('Gostaria de excluir este item?');" >
+									<span class="glyphicon glyphicon-trash"></span>	 
+								 </a>
+							</td>
+						</tr>
+			</c:forEach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th></th>
+						<th>Total:</th>
+						<th>
+						 <fmt:formatNumber value="${sessionScope.somadv}" type="currency">
+		  				 </fmt:formatNumber>
+		  				 </th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+			</div>
+			
 	
 	<!-- Grafico Valor Ideal -->
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
