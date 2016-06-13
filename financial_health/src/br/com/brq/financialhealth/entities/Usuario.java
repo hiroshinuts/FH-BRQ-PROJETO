@@ -15,6 +15,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Classe de entidade: Usuario.
+ * 
+ * Principal classe do sistema, onde guarda informações importantes para o funcionamento de todo o sistema
+ * Guarda informações importantes como: 
+ * -Data de Nascimento, que é item importante para a geração da idade para classe como Idade.class 
+ * -Cpf, Utilizado como "login" da aplicação
+ * -Senha, utilizado para autenticação do usuario
+ * -Renda, utilizado como atributo na classe CalculoPorIdade.class
+ * 
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
+
 @Entity
 @Table(name = "usuario")
 @NamedQueries(

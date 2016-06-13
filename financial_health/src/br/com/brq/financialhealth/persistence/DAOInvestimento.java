@@ -7,12 +7,31 @@ import br.com.brq.financialhealth.entities.Investimento;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;
 
-public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
-
+	/**
+	 * Classe DAO - DAOInvestimento.class
+	 * 
+	 * Classe para comunicacao com o banco de dados - com as informações de investimentos
+	 * 
+	 * 
+	 *@author Hiro
+	 *@version 1.0
+	 *@since Treinamento BRQ/SP
+	 */
+	public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
+	
+	/**
+	 * Construtor da Classe, 
+	 */
 	public DAOInvestimento() {
 		super(Investimento.class);
 	}
 	
+	/**
+	 * 
+	 * Metodo que procura um investimento por nome,
+	 * retornando uma lista dos valores encontrados
+	 * 
+	 */
 	public List<Investimento> findByNome(String nome) throws Exception{
 		
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -28,6 +47,16 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		
 	}
 	
+	/**
+	 * 
+	 * Metodo que procura um investimento por data , de um usuario especifico
+	 * 
+	 * @param dateIni - parametro em DATE , onde é o inicio da procura
+	 * @param dateFim - parametro em DATE , onde é o fim da procura
+	 * @param idUsuario - usuario especifico que é procurado os investimentos
+	 * @return - retorna uma lista de investimentos em uma determinada data de um usuario especifico
+	 * @throws Exception
+	 */
 	public List<Investimento> findByData(Date dateIni, Date dateFim, Integer idUsuario ) throws Exception{
 		
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -44,6 +73,15 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		
 	}
 	
+	/**
+	 * Metodo que soma os investimentos em um intervalo de datas de um usuario especifico
+	 * 
+	 * @param dateIni - parametro em DATE que é o inicio da procura
+	 * @param dateFim - parametro em DATE que é o fim da procura
+	 * @param idUsuario - parametro em INTEGER que corresponde ao ID do usuario
+	 * @return - retorma uma lista da soma dos investimentos encontrados no periodo procurado do usuario especifico
+	 * @throws Exception
+	 */
 	public Double somaByData(Date dateIni, Date dateFim, Integer idUsuario) throws Exception{
 		
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -56,7 +94,11 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		
 		return somatorio;
 	}
-
+	
+	/**
+	 * Sobre escrita de metodo da SuperClasse DAOGeneric passando como parametro um investimento.
+	 * 
+	 */
 	@Override
 	public void delete(Investimento obj) throws Exception {
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -69,6 +111,10 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		
 	}
 	
+	/**
+	 * Sobreescrita de Metodo, onde é procurado um Investimento atraves de um ID do usuario, que é passado em
+	 * Integer
+	 */
 	@Override
 	public Investimento findById(Integer id) throws Exception {
 		
@@ -76,6 +122,16 @@ public class DAOInvestimento extends DAOGeneric<Investimento, Integer>{
 		Investimento inv = (Investimento) session.get(Investimento.class, id);
 		session.close();
 		return inv;
+	}
+	
+	/**
+	 * Metodo para editar as informações do Investimento, passando o investimento e identificando com um ID
+	 * 
+	 */
+	@Override
+	public void saveOrUpdate(Investimento obj) throws Exception {
+		// TODO Auto-generated method stub
+		super.saveOrUpdate(obj);
 	}
 	
 }

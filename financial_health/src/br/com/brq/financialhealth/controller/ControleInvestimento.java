@@ -21,6 +21,17 @@ import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
+/**
+ * 
+ *Servlet de Controle -  ControleInvestimento
+ *
+ *Controla as requisoes das paginas que necessitam uma busca de informacoes por data
+ * 
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 @WebServlet("/ControleInvestimento")
 public class ControleInvestimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -180,11 +191,17 @@ public class ControleInvestimento extends HttpServlet {
     		}
     	}
     }
-
+    
+    /**
+     * Metodo que envia as requisicoes para o metodo execute
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request,response);
 	}
-
+	
+	/**
+     * Metodo que envia as requisicoes para o metodo execute
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request,response);
 	}

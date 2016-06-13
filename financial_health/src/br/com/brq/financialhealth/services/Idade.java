@@ -2,13 +2,33 @@ package br.com.brq.financialhealth.services;
 
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Classe serviço  - Idade.class
+ * 
+ * Classe utilizada calcular a idade.
+ * 
+ * @author Hiro
+ * @version 1.0
+ * @since Treinamento BRQ/SP
+ */
 public class Idade {
-
+	/**
+	 * Construtor da classe Idade.
+	 * 
+	 * * @author Hiro
+	 * @version 1.0
+	 * @since Treinamento BRQ/SP
+	 * @param data
+	 */
 	public Idade(Date data) {  
-	        System.out.println(calcIdade(data));  
 	    }  
 	      
+	/**
+	 * Método que recebe como argumento uma data de Nascimento em Date e retorna a idade em Int
+	 * 
+	 * @param dataNasc
+	 * @return
+	 */
 	    public int calcIdade(Date dataNasc){  
 	        Date hoje = new Date();  
 	        Calendar cal = Calendar.getInstance();  

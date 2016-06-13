@@ -9,6 +9,17 @@ import org.hibernate.Transaction;
 
 import br.com.brq.financialhealth.util.HibernateUtil;
 
+/**
+ * Classe de DAOGeneric  que implementa a interface IDAOGeneric, escrevendo os metodos, passando atributos
+ * Genericos para serem implementados pelo DAO especifico
+ * 
+ * @author Hiro
+ * @version 1.0
+ * @since Treinamento/BRQ
+ *
+ * @param <T>
+ * @param <K>
+ */
 public abstract class DAOGeneric<T, K extends Serializable> implements IDAOGeneric<T, K>{
 	
 	protected Session session;

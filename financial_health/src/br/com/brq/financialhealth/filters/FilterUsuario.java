@@ -12,6 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Classe Filter: FilterUsuario.
+ * 
+ *Classe utilizada para controlar acesso das areas restritas da aplicação, das quais, quem pode navegar são
+ *apenas usuarios devidamente logados 
+ *
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
+
 @WebFilter("/logado/*")
 public class FilterUsuario implements Filter {
 

@@ -9,6 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.brq.financialhealth.services.Estimativa;
 
+/**
+ * 
+ *Servlet de Controle -  ControleEstimativa
+ *
+ *Controla as requisoes para a pagina de estimativa
+ * 
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 @WebServlet("/ControleEstimativa")
 public class ControleEstimativa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,7 +27,16 @@ public class ControleEstimativa extends HttpServlet {
     public ControleEstimativa() {
         super();
     }
-
+    
+    /**
+     * Metodo que recebe requisicoes das paginas JSP, que buscam no banco de dados informações por uma data especifica
+     * de um usuario especifico logado na sessao
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
     	String action = request.getParameter("action");
@@ -51,10 +71,16 @@ public class ControleEstimativa extends HttpServlet {
     	
     }
     
+    /**
+     * Metodo que envia as requisicoes para o metodo execute
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	}
-
+	
+	 /**
+     * Metodo que envia as requisicoes para o metodo execute
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	}

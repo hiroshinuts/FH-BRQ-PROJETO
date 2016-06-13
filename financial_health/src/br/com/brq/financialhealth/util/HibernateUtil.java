@@ -3,8 +3,18 @@ package br.com.brq.financialhealth.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-//classe simples com a finalidade de ler o arquivo de configuração
-//config.xml e produzir conexões com a base de dados
+
+/**
+ * Classe utilitaria - HibernateUtil.class
+ * 
+ * Possui a finalidade de ler o arquivo de configuralçao do config.xml e produzir
+ * Conexoes com a base de dados.
+ * 
+ * 
+ * @author Hiro
+ * @version 1.0
+ * @since Treinamento BRQ/SP
+ */
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory; //conexão..

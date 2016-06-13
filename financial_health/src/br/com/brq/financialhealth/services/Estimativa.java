@@ -1,8 +1,28 @@
 package br.com.brq.financialhealth.services;
 
+/**
+ * Classe de serviço - Estimativa.class
+ * 
+ * Classe que contem o algoritmo para saber estimativa de Investimento, seguindo o sistema
+ * 
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 public class Estimativa {
 	
-
+	/**
+	 * 
+	 * Metodo que calcula quanto o usuario tera de investimento até os 65 anos
+	 * 
+	 * @param idade
+	 * @param valor18_29 - recebe um Double, que é o valor q o usuario imagina ganhar entre 18 e 29 anos
+	 * @param valor30_39 - recebe um Double, que é o valor que o usuario imagina ganhar entre 30 e 39 anos
+	 * @param valor40_49 - recebe um Double, que é o valor que o usuario imagina ganhar entre 40 e 49 anos
+	 * @param valor50_65 - recebe um Double, que é o valor que o usuario imagina ganhar entre os 50 e 65 anos
+	 * @return - retorna o valor apos os calculos
+	 */
 	public Double lancaFuturo(Integer idade, Double valor18_29, Double valor30_39, Double valor40_49, Double valor50_65){
 		
 		Double totalInvestimento = 0.0;

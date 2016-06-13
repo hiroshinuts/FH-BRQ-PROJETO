@@ -20,6 +20,17 @@ import br.com.brq.financialhealth.persistence.DAODespesaVariavel;
 import br.com.brq.financialhealth.persistence.DAOInvestimento;
 import br.com.brq.financialhealth.util.FormatacaoData;
 
+/**
+ * 
+ *Servlet de Controle -  ControleBuscaPorData
+ *
+ *Controla as requisoes das paginas que necessitam uma busca de informacoes por data
+ * 
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 @WebServlet("/ControleBuscaPorData")
 public class ControleBuscaPorData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +39,15 @@ public class ControleBuscaPorData extends HttpServlet {
         super();
     }
 
-    
+    /**
+     * Metodo que recebe requisicoes das paginas JSP, que buscam no banco de dados informações por uma data especifica
+     * de um usuario especifico logado na sessao
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
     	String action = request.getParameter("action");
@@ -81,12 +100,16 @@ public class ControleBuscaPorData extends HttpServlet {
     		
     
     
-    
+    /**
+     * Metodo que envia as requisicoes para o metodo execute
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	
 	}
-
+	/**
+	 * Metodo que envia as requisicoes para o metodo execute
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		execute(request, response);
 	}

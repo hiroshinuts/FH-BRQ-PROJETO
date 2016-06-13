@@ -4,6 +4,18 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+
+/**
+ * Classe utilitaria - GenerateTables.class
+ * 
+ * Utilizada para criar as tabelas do banco de dados, Estas tabelas devem estar devidamente mapeadas pelo
+ * Hibernate
+ * 
+ * 
+ * @author Hiro
+ * @version 1.0
+ * @since Treinamento BRQ/SP
+ */
 //classe para gerar as tabelas no banco de dados pelo hibernate..
 public class GenerateTables {
 

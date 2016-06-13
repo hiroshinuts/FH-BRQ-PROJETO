@@ -1,0 +1,7 @@
+br.com.brq.financialhealth.controller
+br.com.brq.financialhealth.entities
+br.com.brq.financialhealth.filters
+br.com.brq.financialhealth.persistence
+br.com.brq.financialhealth.persistence.generics
+br.com.brq.financialhealth.services
+br.com.brq.financialhealth.util

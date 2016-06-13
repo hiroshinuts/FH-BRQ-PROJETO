@@ -1,0 +1,58 @@
+package br.com.brq.financialhealth.services;
+
+import java.util.Calendar;
+import java.util.Date;
+/**
+ * Classe serviço  - Idade.class
+ * 
+ * Classe utilizada calcular a idade.
+ * 
+ * @author Hiro
+ * @version 1.0
+ * @since Treinamento BRQ/SP
+ */
+public class Idade {
+	/**
+	 * Construtor da classe Idade.
+	 * 
+	 * * @author Hiro
+	 * @version 1.0
+	 * @since Treinamento BRQ/SP
+	 * @param data
+	 */
+	public Idade(Date data) {  
+	    }  
+	      
+	/**
+	 * 
+	 * 
+	 * @param dataNasc
+	 * @return
+	 */
+	    public int calcIdade(Date dataNasc){  
+	        Date hoje = new Date();  
+	        Calendar cal = Calendar.getInstance();  
+	          
+	        cal.setTime(hoje);  
+	        int day1 = cal.get(Calendar.DAY_OF_YEAR);  
+	        int ano1 = cal.get(Calendar.YEAR);  
+	          
+	        cal.setTime(dataNasc);  
+	        int day2 = cal.get(Calendar.DAY_OF_YEAR);  
+	        int ano2 = cal.get(Calendar.YEAR);  
+	          
+	        int nAno = ano1 - ano2;  
+	          
+	        if(day1 < day2)  
+	            nAno--; //Ainda não completou aniversario esse ano.  
+	              
+	        return nAno;
+	    }
+	    
+	    public static void main(String[] args) {
+	    	 Calendar c = Calendar.getInstance();    
+	         c.set(1997, 11, 02);   
+	         new Idade(c.getTime());
+		}
+	
+}

@@ -12,6 +12,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Classe Filter: FilterCache.
+ * 
+ * Classe utilizada limpeza de cache da aplicação, da qual evita que as informações fiquem a disposição por
+ * tempo maior que necessario.
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
+
 @WebFilter(urlPatterns = {"/logado/*","/ControleUsuario","/ControleDespesaFixa","/ControleDespesaVariavel",
 		"/ControleInvestimento"})
 public class FilterCache implements Filter {

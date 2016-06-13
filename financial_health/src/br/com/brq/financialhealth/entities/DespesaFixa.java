@@ -15,6 +15,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Classe de entidade: Despesa Variavel.
+ * 
+ * Classe utilizada para gerenciar todos as despesasa fixas da aplicação. Está entidade fornece uma FK para a
+ * classe Usuario.class
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 @Entity
 @Table(name = "despesafixa")
 @NamedQueries(

@@ -9,27 +9,56 @@ import br.com.brq.financialhealth.entities.DespesaVariavel;
 import br.com.brq.financialhealth.persistence.generics.DAOGeneric;
 import br.com.brq.financialhealth.util.HibernateUtil;
 
-public class DAODespesaVariavel extends DAOGeneric<DespesaVariavel, Integer>{
-
+	/**
+	 * Classe DAO - DAODespesaVariavel.class
+	 * 
+	 * Classe para comunicacao com o banco de dados - com as informações de Despesa Variavel
+	 * 
+	 * 
+	 *@author Hiro
+	 *@version 1.0
+	 *@since Treinamento BRQ/SP
+	 */
+	public class DAODespesaVariavel extends DAOGeneric<DespesaVariavel, Integer>{
+	
+	/**
+	 * Construtor de classe
+	 */
 	public DAODespesaVariavel() {
 		super(DespesaVariavel.class);
 	}
+
+	/**
+	 * Metodo que procura uma Despesa Variavel, atraves de um nome
+	 * 	
+	 * @param nome
+	 * @return - retorna a despesa variavel com o devido nome
+	 * @throws Exception
+	 */
+	public List<DespesaVariavel> findByNome(String nome) throws Exception{
+			
+			session = HibernateUtil.getSessionFactory().openSession();
+			
+			query = session.getNamedQuery(DespesaVariavel.FINDBY_NOME);
+			query.setString("p1", "%" + nome + "%");
+			
+			@SuppressWarnings("unchecked")
+			List<DespesaVariavel> lista = query.list();
+			
+			session.close();
+			return lista;
+			
+		}
 	
-public List<DespesaVariavel> findByNome(String nome) throws Exception{
-		
-		session = HibernateUtil.getSessionFactory().openSession();
-		
-		query = session.getNamedQuery(DespesaVariavel.FINDBY_NOME);
-		query.setString("p1", "%" + nome + "%");
-		
-		@SuppressWarnings("unchecked")
-		List<DespesaVariavel> lista = query.list();
-		
-		session.close();
-		return lista;
-		
-	}
-	
+	/**
+	 * Metodo que procura uma Despesa Variavel por data de um usuario especifico
+	 * 
+	 * @param dateIni - parametro passado em DATE , inicio da procura
+	 * @param dateFim - parametro passado em DATE , fim da procura
+	 * @param idUsuario - parametro passado em Integer do ID do usuario
+	 * @return - retorna uma lista de DespesaVariavel, de um determinado usuario , em uma data estipulada
+	 * @throws Exception
+	 */
 	public List<DespesaVariavel> findByData(Date dateIni, Date dateFim, Integer idUsuario ) throws Exception{
 		
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -46,6 +75,15 @@ public List<DespesaVariavel> findByNome(String nome) throws Exception{
 		
 	}
 	
+	/**
+	 * Metodo que soma as despesas variaveis em um intervalo de datas de um usuario especifico
+	 * 
+	 * @param dateIni - parametro passado em DATE - inicio da procura para soma
+	 * @param dateFim - parametro passado em DATE - fim da procura para a soma
+	 * @param idUsuario - parametro passado em Integer - para identificar de qual usuario somar
+	 * @return - retorna uma lista com a soma das despesas variaveis de um determinado usuario
+	 * @throws Exception
+	 */
 	public Double somaByData(Date dateIni, Date dateFim, Integer idUsuario) throws Exception{
 		
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -59,6 +97,9 @@ public List<DespesaVariavel> findByNome(String nome) throws Exception{
 		return somatorio;
 	}
 	
+	/**
+	 * Sobreescrita de metodo do DAOGeneric , passando como objeto uma DespesaVariavel
+	 */
 	@Override
 	public void delete(DespesaVariavel obj) throws Exception {
 		session = HibernateUtil.getSessionFactory().openSession();
@@ -69,11 +110,27 @@ public List<DespesaVariavel> findByNome(String nome) throws Exception{
 	
 	}
 	
+	/**
+	 * Sobreescrita de metodo do DAOGeneric, passando um Integer que é um id do usuario
+	 */
 	@Override
 	public DespesaVariavel findById(Integer id) throws Exception {
 		session = HibernateUtil.getSessionFactory().openSession();
 		DespesaVariavel dv = (DespesaVariavel) session.get(DespesaVariavel.class, id);
 		return dv;
+	}
+	
+	
+	/**
+	 * Metodo para update de informacoes de Despesa Variavel de um determinado usuario
+	 * 
+	 * @param obj - parametro que indica uma despesa variavel
+	 * @param id - id da despesa variavel para o update
+	 * @throws Exception
+	 */
+	public void saveOrUpdate(DespesaVariavel obj, Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		super.saveOrUpdate(obj);
 	}
 	
 	

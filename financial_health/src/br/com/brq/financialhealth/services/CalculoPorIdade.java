@@ -1,10 +1,28 @@
 package br.com.brq.financialhealth.services;
 
+/**
+ * 
+ * Classe de serviço -  CalculoPorIdade
+ * 
+ * Classe que possui o algoritmo para a geração do Grafico Ideal , este grafico e estes valores são a base
+ * de calculo da aplicação que estipula quanto se deve usar para investimento, despesa fixa e despesa variavel
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
 
-//erro
 public class CalculoPorIdade {
 	
-	
+	/**
+	 * 
+	 * Classe interna , utilizada para guardar os valores.
+	 * 
+	 * 
+	 *@author Hiro
+	 *@version 1.0
+	 *@since Treinamento BRQ/SP
+	 */
 	class GuardaValores{
 		public Integer idade;
 		public Double investimento;
@@ -13,7 +31,13 @@ public class CalculoPorIdade {
 		public Object object[];
 	}
 
-		
+	/**
+	 * Metodo que calcula as porcentagens ideais conforme a idade do Usuario.
+	 * 
+	 * @param idade - parametro recebido em forma de Inteiro
+	 * @param salario - Parametro recebido em forma de Double
+	 * @return - retorna um array de valores, para investimento ideal , despesa fixa e despesa variavel
+	 */
 	public Object[] calculaTotal(int idade, Double salario){
 
 		GuardaValores gv = new GuardaValores();

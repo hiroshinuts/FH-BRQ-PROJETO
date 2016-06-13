@@ -15,6 +15,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Classe de entidade: Investimento.
+ * 
+ * Classe utilizada para gerenciar todos os investimentos da aplicação. Está entidade fornece uma FK para a
+ * classe Usuario.class
+ * 
+ *@author Hiro
+ *@version 1.0
+ *@since Treinamento BRQ/SP
+ */
+
 @Entity
 @Table(name = "investimento")
 @NamedQueries(
