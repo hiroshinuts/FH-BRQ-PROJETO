@@ -88,11 +88,8 @@ nome : "required"
 			<h3><label>Diversificar os investimentos fazem com que além de mais segurança um melhor rendimento.</label></h3>
 			<h3><label>Conforme os dados passados, seu Rendimento é de :</label></h3><br/>
 			
-			<div class="well well-lg">
-			
 			<h1><label><fmt:formatNumber value="${mensagem}" maxFractionDigits="2" type="currency"/></label></h1>
 			
-			</div>
 		
 		
 		

@@ -72,9 +72,11 @@ nome : "required"
 		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
 		
 		<!-- FIM GRAFICO -->
-		
+	</div>
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Investimento</div>	
 			
-	<label>Investimento</label>		
 	<table class="table">
 		<thead>
 			<tr>
@@ -111,8 +113,13 @@ nome : "required"
 			</tr>
 		</tfoot>
 	</table>
+	</div>
+	</div>
 	
-	<label>Despesa Fixa</label>
+	
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Despesa Fixa</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -151,7 +158,11 @@ nome : "required"
 		</tfoot>
 	</table>
 	</div>
-	<label>Despesa Variavel</label>
+	</div>
+	
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Despesa Variavel</div>
 	<table class="table">
 		<thead>
 			<tr>
@@ -187,6 +198,8 @@ nome : "required"
 			</tr>
 		</tfoot>
 	</table>
+	</div>
+	</div>
 	
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script type="text/javascript">
