@@ -44,15 +44,15 @@ nome : "required"
 					Preencha os campos abaixo para registrar:
 					<hr/>
 					
-					<form name="formulario" method="post" action="/financial_health/ControleInvestimento?action=atualizarinv&id=${dados.idInvestimento }">
+					<form name="formulario" method="post" action="/financial_health/ControleInvestimento?action=atualizarinv&id=${dadosi.idInvestimento}" >
 						
 						<label>Id</label><br/>
-						<input type="text" id="id" name="id" value="${dadosi.idInvestimento}" class="form-control" readonly="Investimento"/>
+						<input type="text" name="idinvestimento" value="${dadosi.idInvestimento}" class="form-control" readonly="idInvestimento"/>
 						<label>Nome do Investimento</label>
 						<input type="text" name="nome" class="form-control" value="${dadosi.nome }"/>
 						<br/>
 						<label>Valor:</label>
-						<input type="number" name="valor" class="form-control" placeholder="${dadosi.valor }"/>
+						<input type="number" name="valor" class="form-control" value="${dadosi.valor }"/>
 						<br/>
 						
 						<label>Data do Investimento</label><br/>

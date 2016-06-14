@@ -163,9 +163,16 @@ public class ControleDespesaFixa extends HttpServlet {
     				}
     	    		
     	    	}
-    	//TODO
     	    	else if(action.equalsIgnoreCase("editardf")){
     	    		try{
+    	    			
+    	    		DespesaFixa df = new DespesaFixa();
+    	    		DAODespesaFixa daodf = new DAODespesaFixa();
+    	    		
+    	    		df = daodf.findById(Integer.parseInt(request.getParameter("id")));
+    	    		request.setAttribute("dadosdf", df);
+    	    		request.getRequestDispatcher("/logado/editdf.jsp").forward(request, response);
+    	    			
     	    			
     	    		}catch(Exception e){
     	    			e.printStackTrace();
@@ -173,15 +180,60 @@ public class ControleDespesaFixa extends HttpServlet {
     	    		}
     	    		
     	    	}
-    	    	//TODO
     	    	else if(action.equalsIgnoreCase("atualizardf")){
     	    			try{
     	    			
+    	    				HttpSession session = request.getSession();
+    	    				DAODespesaFixa daoDF = new DAODespesaFixa();
+    	    				DespesaFixa df = new DespesaFixa();
+    	    				Usuario u = (Usuario) session.getAttribute("usuariologado");
+
+    	    				df.setIdDespesaFixa(Integer.parseInt(request.getParameter("id")));
+    	    				df.setNome(request.getParameter("nome"));
+    	    				df.setValor(Double.parseDouble(request.getParameter("valor")));
+    	    				df.setDataDespesaFixa(FormatacaoData.convertToDate(request.getParameter("datadespesafixa")));
+    	    				df.setUsuario(u);
+    	        			daoDF.saveOrUpdate(df);
+    	        			
+    	        			Calendar c =  Calendar.getInstance();
+    	        			
+    	        			int ano = c.get(Calendar.YEAR);
+    	        			int mes = c.get(Calendar.MONTH);
+    	        			int dia = 1;
+    	        			
+    	        			c.set(ano, mes, dia);
+    	        			
+    	        			int numeroDias = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+    	        			
+    	        			Date dateIni = c.getTime();
+    	        			
+    	        			c.add(Calendar.DAY_OF_MONTH, numeroDias-1);
+    	        			
+    	        			Date dateFim = c.getTime();
+    	        			
+    	        			DAOInvestimento daoInv = new DAOInvestimento();
+    	        			DAODespesaVariavel daoDV = new DAODespesaVariavel();
+    	        			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
+    	        			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
+    	        			List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+    	        			Double somaInv = daoInv.somaByData(dateIni, dateFim, u.getIdUsuario());
+    	        			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
+    	        			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
+    	        			
+    	        			session.setAttribute("dinv", listaInv);
+    	        			session.setAttribute("ddf", listaDF);
+    	        			session.setAttribute("ddv", listaDV);
+    	        			session.setAttribute("somainv", somaInv);
+    	        			session.setAttribute("somadf", somaDF);
+    	        			session.setAttribute("somadv", somaDV);
+    	    				
+    	    				
+    	    				
     	    		}catch(Exception e){
     	    			e.printStackTrace();
     	    			
     	    		}finally{
-    	    			
+    	    			request.getRequestDispatcher("/logado/indexlogado.jsp").forward(request, response);
     	    		}
     	    	}
     	

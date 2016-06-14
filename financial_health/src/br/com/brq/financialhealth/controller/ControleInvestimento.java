@@ -186,16 +186,54 @@ public class ControleInvestimento extends HttpServlet {
     	//TODO
     	else if(action.equalsIgnoreCase("atualizarinv")){
     			try{
+    				HttpSession session = request.getSession();
     				DAOInvestimento dao = new DAOInvestimento();
     				Investimento inv = new Investimento();
-    				
-    				System.out.println("AAAAAAAAAAAAAAAAA");
-    				inv = dao.findById(Integer.parseInt(request.getParameter("id")));
+    				Usuario u = (Usuario) session.getAttribute("usuariologado");
+
+    				inv.setIdInvestimento(Integer.parseInt(request.getParameter("id")));
     				inv.setNome(request.getParameter("nome"));
-        			inv.setValor(Double.parseDouble(request.getParameter("valor")));
-        			inv.setDataInvestimento(FormatacaoData.convertToDate(request.getParameter("datainvestimento")));
-        			
+    				inv.setValor(Double.parseDouble(request.getParameter("valor")));
+    				inv.setDataInvestimento(FormatacaoData.convertToDate(request.getParameter("datainvestimento")));
+    				inv.setUsuario(u);
         			dao.saveOrUpdate(inv);
+        			
+        			Calendar c =  Calendar.getInstance();
+        			
+        			int ano = c.get(Calendar.YEAR);
+        			int mes = c.get(Calendar.MONTH);
+        			int dia = 1;
+        			
+        			c.set(ano, mes, dia);
+        			
+        			int numeroDias = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+        			
+        			Date dateIni = c.getTime();
+        			
+        			c.add(Calendar.DAY_OF_MONTH, numeroDias-1);
+        			
+        			Date dateFim = c.getTime();
+        			
+        			DAOInvestimento daoInv = new DAOInvestimento();
+        			DAODespesaFixa daoDF = new DAODespesaFixa();
+        			DAODespesaVariavel daoDV = new DAODespesaVariavel();
+        			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
+        			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
+        			List<DespesaVariavel> listaDV = daoDV.findByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaInv = daoInv.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaDF = daoDF.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			Double somaDV = daoDV.somaByData(dateIni, dateFim, u.getIdUsuario());
+        			
+        			session.setAttribute("dinv", listaInv);
+        			session.setAttribute("ddf", listaDF);
+        			session.setAttribute("ddv", listaDV);
+        			session.setAttribute("somainv", somaInv);
+        			session.setAttribute("somadf", somaDF);
+        			session.setAttribute("somadv", somaDV);
+        			
+        		
+        			
+        			
         			
     			
     		}catch(Exception e){
