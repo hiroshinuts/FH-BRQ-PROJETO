@@ -218,9 +218,11 @@ nome : "required"
 							<td>${inv.idInvestimento }   </td>
 							<td>${inv.nome }  </td>
 							<td>${inv.valor }  </td>
-							<td>${inv.dataInvestimento }  </td>
 							<td>
-								<a href="/financial_health/ControleInvestimento?action=editarinv&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
+							<fmt:formatDate value="${inv.dataInvestimento}" type="both" pattern="dd/MM/yyyy" />
+							 </td>
+							<td>
+								<a href="/financial_health/ControleInvestimento?action=editinv&id=${inv.idInvestimento}" class="btn btn-default btn-sm">
 									<span class="glyphicon glyphicon-pencil"></span>
 								</a>
 								
@@ -267,7 +269,9 @@ nome : "required"
 					<td>${df.idDespesaFixa }</td>
 					<td>${df.nome }  </td>
 					<td>${df.valor }  </td>
-					<td>${df.dataDespesaFixa }  </td><td>
+					<td>
+					<fmt:formatDate value="${df.dataDespesaFixa}" type="both" pattern="dd/MM/yyyy" />
+					 </td><td>
 						<a href="/financial_health/ControleDespesaFixa?action=editardf&id=${df.idDespesaFixa}"  class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
@@ -313,7 +317,9 @@ nome : "required"
 							<td>${dv.idDespesaVariavel }   </td>
 							<td>${dv.nome }  </td>
 							<td>${dv.valor }  </td>
-							<td>${dv.dataDespesaVariavel }  </td>
+							<td>
+							<fmt:formatDate value="${dv.dataDespesaVariavel}" type="both" pattern="dd/MM/yyyy" />
+							 </td>
 							<td>
 								<a href="/financial_health/ControleDespesaVariavel?action=editardv&id=${dv.idDespesaVariavel}" class="btn btn-default btn-sm">
 									<span class="glyphicon glyphicon-pencil"></span>

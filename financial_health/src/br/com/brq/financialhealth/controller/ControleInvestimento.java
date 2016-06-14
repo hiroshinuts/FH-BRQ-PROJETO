@@ -167,27 +167,42 @@ public class ControleInvestimento extends HttpServlet {
     		
     	}
     	//TODO
-    	else if(action.equalsIgnoreCase("editarinv")){
+    	else if(action.equalsIgnoreCase("editinv")){
     		try{
+    		
+    			Investimento inv = new Investimento();
+    			DAOInvestimento d = new DAOInvestimento();
+    			
+    			inv = d.findById(Integer.parseInt(request.getParameter("id")));
+    			request.setAttribute("dadosi", inv);
+    			request.getRequestDispatcher("/logado/editinv.jsp").forward(request, response);
     			
     		}catch(Exception e){
     			e.printStackTrace();
     			
-    		}finally{
-    			//Mudar para direcionar para o indexlogado
-    			request.getRequestDispatcher("/logado/editinv.jsp").forward(request, response);;
     		}
     		
     	}
     	//TODO
     	else if(action.equalsIgnoreCase("atualizarinv")){
     			try{
+    				DAOInvestimento dao = new DAOInvestimento();
+    				Investimento inv = new Investimento();
+    				
+    				System.out.println("AAAAAAAAAAAAAAAAA");
+    				inv = dao.findById(Integer.parseInt(request.getParameter("id")));
+    				inv.setNome(request.getParameter("nome"));
+        			inv.setValor(Double.parseDouble(request.getParameter("valor")));
+        			inv.setDataInvestimento(FormatacaoData.convertToDate(request.getParameter("datainvestimento")));
+        			
+        			dao.saveOrUpdate(inv);
+        			
     			
     		}catch(Exception e){
     			e.printStackTrace();
     			
     		}finally{
-    			
+    			request.getRequestDispatcher("/logado/indexlogado.jsp").forward(request, response);
     		}
     	}
     }

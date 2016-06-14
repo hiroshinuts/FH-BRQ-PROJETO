@@ -1,0 +1,14 @@
+TECNOLOGIAS 
+
+PADRAO MVC
+
+M - Model -Entidades - (Hibernate - DAOGeneric - DAO)  Regra de Negocio
+V - Views - JSP - bootstrap , google chart, Jquery
+C - Controllers 
+
+-------------------------------------------------------------
+
+
+GitHub (Versionamento)
+https://github.com/hiroshinuts/FH-BRQ-PROJETO
+

@@ -68,7 +68,7 @@ public class ControleDespesaFixa extends HttpServlet {
         		
         		request.setAttribute("mensagem", "Despesa gravada com sucesso!");
         		
-Calendar c =  Calendar.getInstance();
+        		Calendar c =  Calendar.getInstance();
     			
     			int ano = c.get(Calendar.YEAR);
     			int mes = c.get(Calendar.MONTH);
@@ -170,9 +170,6 @@ Calendar c =  Calendar.getInstance();
     	    		}catch(Exception e){
     	    			e.printStackTrace();
     	    			
-    	    		}finally{
-    	    			//Mudar para direcionar para o indexlogado
-    	    			request.getRequestDispatcher("/logado/editdf.jsp").forward(request, response);;
     	    		}
     	    		
     	    	}

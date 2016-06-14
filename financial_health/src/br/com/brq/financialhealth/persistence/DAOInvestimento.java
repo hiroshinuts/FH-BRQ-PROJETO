@@ -128,7 +128,6 @@ import br.com.brq.financialhealth.util.HibernateUtil;
 	 * Metodo para editar as informações do Investimento, passando o investimento e identificando com um ID
 	 * 
 	 */
-	@Override
 	public void saveOrUpdate(Investimento obj) throws Exception {
 		// TODO Auto-generated method stub
 		super.saveOrUpdate(obj);

@@ -134,7 +134,7 @@ public class DAODespesaFixa extends DAOGeneric<DespesaFixa, Integer> {
 	 * @param id - id da despesa fixa para o update
 	 * @throws Exception
 	 */
-	public void saveOrUpdate(DespesaFixa obj) throws Exception {
+	public void saveOrUpdate(DespesaFixa obj, Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		super.saveOrUpdate(obj);
 	}

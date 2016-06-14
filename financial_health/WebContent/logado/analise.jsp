@@ -96,8 +96,7 @@ nome : "required"
   					</fmt:formatNumber>
 					  </td>
 					<td>
-					${inv.dataInvestimento}
-					<fmt:formatDate value="${dv.dataInvestimento}" type="date" pattern="dd/MM/yyyy" />
+					<fmt:formatDate value="${inv.dataInvestimento}" type="both" pattern="dd/MM/yyyy" />
 					  </td>
 				</tr>
 	</c:forEach>
@@ -140,8 +139,8 @@ nome : "required"
   					</fmt:formatNumber>
 					</td>
 					<td>
-					${df.dataDespesaFixa}
-					  </td>
+					<fmt:formatDate value="${df.dataDespesaFixa}" type="both" pattern="dd/MM/yyyy" />
+					 </td>
 				</tr>
 	</c:forEach>
 		</tbody>
@@ -182,7 +181,7 @@ nome : "required"
   					</fmt:formatNumber>
 					  </td>
 					<td>
-					${dv.dataDespesaVariavel}"
+					<fmt:formatDate value="${dv.dataDespesaVariavel}" type="both" pattern="dd/MM/yyyy" />
 					  </td>
 				</tr>
 	</c:forEach>
