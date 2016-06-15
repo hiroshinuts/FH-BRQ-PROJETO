@@ -1,0 +1,14 @@
+package br.com.brq.financialhealth.util;
+
+import java.sql.DriverManager;
+
+import com.mysql.jdbc.Connection;
+
+public class ConnectionUtil {
+	
+	public static Connection getConnection() throws Exception{
+		Class.forName("com.mysql.jdbc.Driver");
+		return (Connection) DriverManager.getConnection("jdbc:mysql:localhost:3306/fhprojeto", "root", "brqbrq");
+	}
+
+}

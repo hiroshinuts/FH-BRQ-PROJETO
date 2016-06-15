@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:11 -0300] "GET /financial_health/logado/indexlogado.jsp HTTP/1.1" 200 11292
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:13 -0300] "GET /financial_health/logado/estimativa.jsp HTTP/1.1" 200 3305
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:26 -0300] "POST /financial_health/ControleEstimativa?action=calcular HTTP/1.1" 200 3318
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:52 -0300] "GET /financial_health/logado/indexlogado.jsp HTTP/1.1" 200 11292
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:53 -0300] "GET /financial_health/ControleUsuario?action=logout HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:53 -0300] "GET /financial_health/index.jsp HTTP/1.1" 200 1821
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:53 -0300] "GET /FinancialHealth/js/jquery-1.12.4.min.js HTTP/1.1" 404 1072
+0:0:0:0:0:0:0:1 - - [15/Jun/2016:00:00:53 -0300] "GET /FinancialHealth/js/bootstrap.min.js HTTP/1.1" 404 1064
