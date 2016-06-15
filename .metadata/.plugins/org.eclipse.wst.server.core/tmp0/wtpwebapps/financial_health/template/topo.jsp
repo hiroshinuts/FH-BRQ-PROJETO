@@ -1,6 +1,4 @@
-<div class="well well-sm">
-  <h1>Financial Health</h1> 
-  <p>Controle Financeiro </p>
+  <div class="brand">Financial Health</div>
+  <div class="address-bar">Controle Financeiro</div>
  
 <br/>
-</div>

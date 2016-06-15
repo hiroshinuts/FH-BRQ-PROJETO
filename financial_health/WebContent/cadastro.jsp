@@ -11,6 +11,7 @@
 <title>Cadastro</title>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/financial_health/css/business-casual.css" />
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap-theme.min.css" />
 	
@@ -47,16 +48,20 @@ nome : "required"
 </head>
 <body class = "container">
 
-<jsp:include page="template/topo.jsp"></jsp:include>
+  <div class="brand">Financial Health</div>
+  <div class="address-bar">Controle Financeiro</div>
+
 <div class="col-md-12">
 
+<div class="address-bar">
 <h3>Cadastro de Usuario</h3>
-<a href="index.jsp">Voltar</a> para a página inicial.
+</div>
 <hr/>
+<h5><a href="index.jsp">Voltar</a> para a página inicial.</h5>
 
 
-	<div class="col-md-4">
-	
+	<div class="col-md-6">
+		<div class="box">
 			<form id="formulario" name="formulario" method="post" action="/financial_health/ControleUsuario?action=cadastrarUsuario">
 			
 				<label>Nome Completo:</label><br/>
@@ -90,6 +95,7 @@ nome : "required"
 				<input type="submit" value="Cadastrar" class="btn btn-success" />
 				<br/>
 			</form>
+		</div>
 		</div>
 	
 </div>

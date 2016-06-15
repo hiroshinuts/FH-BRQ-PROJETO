@@ -7,7 +7,7 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/business-casual.css" />
 
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
@@ -35,12 +35,14 @@ nome : "required"
 </script>
 </head>
 <body>
+<jsp:include page="/template/topo.jsp"></jsp:include>
 
 	<!-- INICIO DO MODAL PARA EDITAR CADASTRO INV - DF - DV -->
 	<div class="col-md-12">
-	
+			<div class="col-md-4">
+					<div class="box">
 				
-					Preencha os campos abaixo para registrar:
+					Preencha os campos abaixo para Editar:
 					<hr/>
 					
 					<form name="formulario" method="post" action="/financial_health/ControleDespesaVariavel?action=atualizardv&id=${dadosdv.idDespesaVariavel} ">
@@ -62,7 +64,8 @@ nome : "required"
 						<input type="submit" value="Cadastrar" class="btn btn-success" />
 						
 					</form>
-				
+				</div>
+			</div>	
 		</div>
 	
 	<!-- FIM DO MODAL DE EDIT -->

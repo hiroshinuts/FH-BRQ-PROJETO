@@ -13,7 +13,7 @@
 <!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/business-casual.css" />
 
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
@@ -46,13 +46,12 @@ nome : "required"
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
-	<label>Id </label> ${usuariologado.idUsuario}
-  	<label>Usuario: </label> ${usuariologado.nome} <br/>
-		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
+  	<h5><label>Usuario: </label> ${usuariologado.nome} <br/></h5>
+		<h5><a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.</h5>
 	<hr/>
 
 	<div class="col-md-4">
-	
+		<div class="box">
 			<form id="formulario" name="formulario" method="post" action="/financial_health/ControleEstimativa?action=calcular">
 			
 				<label>Idade:</label><br/>
@@ -80,19 +79,21 @@ nome : "required"
 				<br/>
 			</form>
 		</div>
+		</div>
 		
 		<div class="col-md-8">
+			<h3><label>*****VALOR FIXADO DA POUPANÇA DE 0,5%*****</label></h3><br/>
 			
-			<h3><label>Alcançando o indicado que se deve "Investir" por mês, que o sistema coloca como "Gráfico Ideal"</label></h3>
-			<h3><label>Para o calculo da estimativa, foi utilizado o valor fixo da poupança de: 0,5%</label></h3>
-			<h3><label>Diversificar os investimentos fazem com que além de mais segurança um melhor rendimento.</label></h3>
+			<h3><label>Diversificar os investimentos, além de um maior rendimento, gera mais segurança para seu investimento</label></h3><br/>
+			
 			<h3><label>Conforme os dados passados, seu Rendimento é de :</label></h3><br/>
 			
-			<div class="well well-lg">
+			<div class= "well well-sm">
 			
-			<h1><label><fmt:formatNumber value="${mensagem}" maxFractionDigits="2" type="currency"/></label></h1>
+			<font size="15"><label><fmt:formatNumber value="${mensagem}" maxFractionDigits="2" type="currency"/></label></h1></font>
 			
 			</div>
+			
 		
 		
 		

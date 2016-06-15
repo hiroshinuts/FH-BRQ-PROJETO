@@ -13,7 +13,6 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
-<link rel="stylesheet" type="text/css" media="screen, projector, print" href="/financial_health/css/pizza.css"/>
 
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
@@ -44,33 +43,35 @@ nome : "required"
 <body class="container">
 	
 	<div class="col-md-12">
-	<jsp:include page="/template/topo.jsp"></jsp:include>
+		<div class="well well-sm">
+  			<h1>Financial Health - GERENCIAMENTO DOS LANÇAMENTOS </h1> 
+		</div>
 	
 		<label>Id </label> ${usuariologado.idUsuario}
   		<label>Usuario: </label> ${usuariologado.nome} <br/>
 	
 		<h4>${mensagem}</h4>
 		<div class="col-md-3 panel text-center">
-			<a href="#" data-target="#janelainvestimento" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Investimento</a>
+			<a href="#" data-target="#janelainvestimento" data-toggle="modal" class="btn btn-primary btn-block">Cadastrar Investimento</a>
 		</div>
 		
 		<div class="col-md-3 panel text-center">
-			<a href="#" data-target="#janeladespesafixa" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Despesa Fixa</a>
+			<a href="#" data-target="#janeladespesafixa" data-toggle="modal" class="btn btn-primary btn-block">Cadastrar Despesa Fixa</a>
 		</div>
 			
 		
 		<div class="col-md-3 panel text-center">
-			<a href="#" data-target="#janeladespesavariavel" data-toggle="modal" class="btn btn-default btn-block">Cadastrar Despesa Variavel</a>
+			<a href="#" data-target="#janeladespesavariavel" data-toggle="modal" class="btn btn-primary btn-block">Cadastrar Despesa Variavel</a>
 		</div>
 		
 			<br/><br/><br/>
 			
 		<div class="col-md-3 panel text-center">
-			<a href="/financial_health/logado/analise.jsp" class="btn btn-default btn-block" >Busca/Periodo</a> 
+			<a href="/financial_health/logado/analise.jsp" class="btn btn-primary btn-block" >Busca/Periodo</a> 
 		</div>
 		
 		<div class="col-md-3 panel text-center">
-			<a href="/financial_health/logado/estimativa.jsp" class="btn btn-default btn-block" >Estimativa Futura</a> 
+			<a href="/financial_health/logado/estimativa.jsp" class="btn btn-primary btn-block" >Estimativa Futura</a> 
 		</div>
 		
 		
@@ -191,8 +192,8 @@ nome : "required"
 	<div class="col-md-12">
 	<table class="columns">
       <tr>
-		<td><div class="col-md-4" id="graficoPorData" style="width: 600px; height: 600px;"></div></td>
-		<td><div class="col-md-4" id="graficoLancamento" style="width: 600px; height: 600px;"></div></td>
+		<td><div class="col-md-4" id="graficoPorData" style="width: 450px; height: 250px;"></div></td>
+		<td><div class="col-md-4" id="graficoLancamento" style="width: 450px; height: 250px;"></div></td>
 		</tr>
 	</table>
 	</div>

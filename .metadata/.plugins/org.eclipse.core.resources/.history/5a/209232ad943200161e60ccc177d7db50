@@ -1,0 +1,226 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
+    
+    
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+	<!-- Arquivos de folha de estilo CSS -->
+<link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/business-casual.css" />
+
+<!-- Arquivos Javascript -->
+<script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/financial_health/js/messages_pt_BR.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready( //quando a página carregar...
+function(){ //faça..
+//validar o formulário..
+$("#formulario").validate(
+{
+rules:{
+nome : "required"
+				},messages:{
+						nome:{
+							required : "Por favor, informe o nome.."
+							}
+				 }
+			}
+		);
+	}
+);
+</script>
+
+</head>
+<body class="container">
+
+	
+	<div class="col-md-12">
+	<jsp:include page="/template/topo.jsp"></jsp:include>
+	
+  	<h5><label>Usuario: </label> ${usuariologado.nome} <br/></h5>
+	<h3>Lançamentos por data</h3>
+		<h5><a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.</h5>
+	<hr/>
+	
+		<div class="col-md-3">
+		<form name="formulario" id="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
+		<label>Data Inicio</label>
+		<input type="date" class="form-control required"  name="dateini" id="dateini"/>
+		<label>Data Fim</label>
+		<input type="date" class="form-control required" name="datefim" id="datefim"/>
+		<input type="submit">
+		
+		</form>
+			<p>
+				${mensagem}
+			</p>
+		</div>
+			
+		<!-- GRAFICO -->
+		
+		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
+		
+		<!-- FIM GRAFICO -->
+	</div>
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Investimento</div>	
+			
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+	<c:forEach items="${dadosinv}" var="inv">
+				<tr>
+					<td>${inv.idInvestimento }   </td>
+					<td>${inv.nome }  </td>
+					<td>
+					<fmt:formatNumber value="${inv.valor}" type="currency">
+  					</fmt:formatNumber>
+					  </td>
+					<td>
+					<fmt:formatDate value="${inv.dataInvestimento}" type="both" pattern="dd/MM/yyyy" />
+					  </td>
+				</tr>
+	</c:forEach>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>
+				<fmt:formatNumber value="${somainva}" type="currency">
+  				</fmt:formatNumber></th>
+				<th></th>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	</div>
+	
+	
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Despesa Fixa</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+	
+	<c:forEach items="${dadosdf}" var="df">
+				<tr>
+					<td>${df.idDespesaFixa }   </td>
+					<td>${df.nome }  </td>
+					<td>
+					<fmt:formatNumber value="${df.valor}" type="currency">
+  					</fmt:formatNumber>
+					</td>
+					<td>
+					<fmt:formatDate value="${df.dataDespesaFixa}" type="both" pattern="dd/MM/yyyy" />
+					 </td>
+				</tr>
+	</c:forEach>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>
+				 <fmt:formatNumber value="${somadfa}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
+				<th></th>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	</div>
+	
+		<div class="col-md-12">
+		<div class="panel panel-default">
+		<div class="panel-heading">Despesa Variavel</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Nome</th>
+				<th>Valor</th>
+				<th>Data</th>
+			</tr>
+		</thead>
+		<tbody>
+	<c:forEach items="${dadosdv}" var="dv">
+				<tr>
+					<td>${dv.idDespesaVariavel }   </td>
+					<td>${dv.nome }  </td>
+					<td>
+					<fmt:formatNumber value="${dv.valor}" type="currency">
+  					</fmt:formatNumber>
+					  </td>
+					<td>
+					<fmt:formatDate value="${dv.dataDespesaVariavel}" type="both" pattern="dd/MM/yyyy" />
+					  </td>
+				</tr>
+	</c:forEach>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th>Total:</th>
+				<th>
+				 <fmt:formatNumber value="${somadva}" type="currency">
+  				 </fmt:formatNumber>
+  				 </th>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	</div>
+	
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+	      google.charts.load("current", {packages:["corechart"]});
+	      google.charts.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Task', 'Hours per Day'],
+	          ['Investimento(${somainva})',  ${somainva}],
+	          ['DespesaFixa(${somadfa})',      ${somadfa}],
+	          ['DespesaVariavel(${somadva})',  ${somadva}],
+	        ]);
+	
+	        var options = {
+	          title: 'Grafico por Data',
+	          is3D: true,
+	          colors: ['#41DE11', '#DEDE11', '#FD0404']
+	        };
+	
+	        var chart = new google.visualization.PieChart(document.getElementById('graficoPorData'));
+	        chart.draw(data, options);
+	      }
+   	 </script>
+</body>
+</html>

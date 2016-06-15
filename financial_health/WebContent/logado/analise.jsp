@@ -14,6 +14,7 @@
 	<!-- Arquivos de folha de estilo CSS -->
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/financial_health/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="/financial_health/css/business-casual.css" />
 
 <!-- Arquivos Javascript -->
 <script type="text/javascript" src="/financial_health/js/jquery-1.12.4.min.js"></script>
@@ -47,29 +48,29 @@ nome : "required"
 	<div class="col-md-12">
 	<jsp:include page="/template/topo.jsp"></jsp:include>
 	
-	<label>Id </label> ${usuariologado.idUsuario}
-  	<label>Usuario: </label> ${usuariologado.nome} <br/>
-	<h3>Lançamentos por data</h3>
-		<a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.
+  	<h5><label>Usuario: </label> ${usuariologado.nome} <br/></h5>
+	<h3>Busca lançamentos por data</h3>
+		<h5><a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.</h5>
 	<hr/>
-	
-		<div class="col-md-3">
+<div class="col-md-3">
+	<div class="box">
 		<form name="formulario" id="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">
 		<label>Data Inicio</label>
 		<input type="date" class="form-control required"  name="dateini" id="dateini"/>
 		<label>Data Fim</label>
 		<input type="date" class="form-control required" name="datefim" id="datefim"/>
-		<input type="submit">
+		<input type="submit" class="btn btn-success btn-sm" />
 		
 		</form>
 			<p>
 				${mensagem}
 			</p>
 		</div>
+</div>
 			
 		<!-- GRAFICO -->
 		
-		<div id="graficoPorData" style="width: 900px; height: 500px;"></div>
+		<div id="graficoPorData" style="width: 500x; height: 500px;"></div>
 		
 		<!-- FIM GRAFICO -->
 	</div>
