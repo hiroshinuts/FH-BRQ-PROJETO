@@ -52,6 +52,10 @@ nome : "required"
 	<h3>Busca lançamentos por data</h3>
 		<h5><a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.</h5>
 	<hr/>
+	<a href="ControleBuscaPorData?action=gerarelatorio"
+		class="btn btn-primary">
+		Gerar Relatório de Lançamentos
+	</a>
 <div class="col-md-3">
 	<div class="box">
 		<form name="formulario" id="formulario" method="post" action="/financial_health/ControleBuscaPorData?action=buscadata">

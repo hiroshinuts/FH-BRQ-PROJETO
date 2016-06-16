@@ -9,7 +9,7 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/fhprojeto</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">rhtrht</property>
+    <property name="hibernate.connection.password">brqbrq</property>
     
     <!-- Configuração para que sempre que o hibernate execute uma instrução SQL
          no banco de dados, ele imprima o codigo SQL no console do eclipse -->

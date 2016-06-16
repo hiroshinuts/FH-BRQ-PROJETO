@@ -37,6 +37,10 @@ nome : "required"
 <body>
 <jsp:include page="/template/topo.jsp"></jsp:include>
 
+	<h5><label>Usuario: </label> ${usuariologado.nome} <br/></h5>
+		<h5><a href="/financial_health/logado/indexlogado.jsp">Voltar</a> para a página inicial.</h5>
+	<hr/>
+
 	<!-- INICIO DO MODAL PARA EDITAR CADASTRO INV - DF - DV -->
 	<div class="col-md-12">
 			<div class="col-md-4">

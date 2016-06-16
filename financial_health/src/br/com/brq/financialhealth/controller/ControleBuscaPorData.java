@@ -77,6 +77,10 @@ public class ControleBuscaPorData extends HttpServlet {
     			Date dateIni = FormatacaoData.convertToDate(request.getParameter("dateini"));
     			Date dateFim = FormatacaoData.convertToDate(request.getParameter("datefim"));
     			
+    			SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+    			
+    			session.setAttribute("dateini", fmt.format(dateIni));
+    			session.setAttribute("datefim", fmt.format(dateFim));
     			
     			List<Investimento> listaInv = daoInv.findByData(dateIni, dateFim, u.getIdUsuario());
     			List<DespesaFixa> listaDF = daoDF.findByData(dateIni, dateFim, u.getIdUsuario());
@@ -104,34 +108,31 @@ public class ControleBuscaPorData extends HttpServlet {
     		else if(action.equalsIgnoreCase("gerarelatorio")){
     			
     			try{
-    				
-    				FacesContext context = FacesContext.getCurrentInstance();
-    				
-    				InputStream arquivo = context.getExternalContext().getResourceAsStream("/reports/relatorio.jasper");
+    				    				
+    				InputStream arquivo = getServletContext().getResourceAsStream("/reports/relatorio.jasper");
     				
     				HttpSession session = request.getSession();
     				Usuario u = (Usuario) session.getAttribute("usuariologado");
-    				SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-    				Date dateIni = FormatacaoData.convertToDate(request.getParameter("dateini"));
-    				Date dateFim = FormatacaoData.convertToDate(request.getParameter("datefim"));
+    				
+    				
+    				String dateIni = (String) session.getAttribute("dateini");
+    				String dateFim = (String) session.getAttribute("datefim");
     				
     				
     				Map<String,Object> parametros = new HashMap<String, Object>();
     				parametros.put("dataIni", dateIni);
     				parametros.put("dataFim", dateFim);
-    				parametros.put("usuariologado", u.getIdUsuario());
+    				parametros.put("idUsuario", u.getIdUsuario().toString());
     				
     				byte[]pdf = JasperRunManager.runReportToPdf(arquivo, parametros, ConnectionUtil.getConnection());
-    				
-    				response = (HttpServletResponse) context.getExternalContext().getResponse();
     				
     				ServletOutputStream out = response.getOutputStream();
     				out.write(pdf);
     				out.flush();
-    				context.responseComplete();
+    				out.close();
     				
-    				request.setAttribute("mensagem", "Gerado relatorio com Sucesso!");
     			}catch(Exception e){
+    				e.printStackTrace();
     				e.getMessage();
     			}
     		}
